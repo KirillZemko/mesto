@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="desscription" content="Проектная работа 4">
+  <meta name="author" content="Кирилл Земко">
+  <title>Mesto</title>
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+<body class="page">
+<header class="header">
+  <a href="#" class="logo"></a>
+</header>
+<main class="content">
+  <section class="profile">
+    <div class="profile__info">
+      <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
+        <div class="profile__text-wrapper">
+          <div class="profile__name-wrapper">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="edit-button"><img src="./images/edit-button.svg" alt="Конопка редактирования"></button>
+          </div>
+          <p class="profile__job">Исследователь океана</p>
+        </div>
+    </div>
+    <button class="add-button"><img src="./images/add-button.svg" alt="Кнопка добавления"></button>
+  </section>
+  <section class="elements">
+    <div class="element">
+      <img class="element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
+      <div class="element__desription">
+        <h2 class="element__title">Карачаевск</h2>
+        <a class="element__like" href="#"></a>
+      </div>
+    </div>
+    <div class="element">
+      <img class="element__image" src="./images/elbrus.jpg" alt="Эльбрус">
+      <div class="element__desription">
+        <h2 class="element__title">Гора Эльбрус</h2>
+        <a class="element__like" href="#"></a>
+      </div>
+    </div>
+    <div class="element">
+      <img class="element__image" src="./images/dombai.jpg" alt="Домбай">
+      <div class="element__desription">
+        <h2 class="element__title">Домбай</h2>
+        <a class="element__like" href="#"></a>
+      </div>
+    </div>
+    <div class="element">
+      <img class="element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
+      <div class="element__desription">
+        <h2 class="element__title">Карачаевск</h2>
+        <a class="element__like" href="#"></a>
+      </div>
+    </div>
+    <div class="element">
+      <img class="element__image" src="./images/elbrus.jpg" alt="Эльбрус">
+      <div class="element__desription">
+        <h2 class="element__title">Гора Эльбрус</h2>
+        <a class="element__like" href="#"></a>
+      </div>
+    </div>
+    <div class="element">
+      <img class="element__image" src="./images/dombai.jpg" alt="Домбай">
+      <div class="element__desription">
+        <h2 class="element__title">Карачаево-Черкесия</h2>
+        <button class="element__like" href="#"></button>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <p class="footer__title">&copy; 2021 Mesto Russia</p>
+</footer>
+<!-- popup -->
+<div class="popup" id="popup">
+  <div class="popup__container">
+    <a href="#" class="popup__close-button"></a>
+    <h2 class="popup__title">Редактировать профиль</h2>
+    <form class="popup__form" action="">
+      <fieldset class="form__profile-info">
+        <input class="form__input form__input-name" placeholder="Жак Ив Кусто" type="text"  id="input-name">
+        <input class="form__input form__input-job" placeholder="Исследователь океана" type="text" id="input-job">
+        <button class="popup__button" type="submit">Сохранить</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<script src="./js/script.js"></script>
+</body>
+</html>

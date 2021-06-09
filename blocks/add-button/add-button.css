@@ -1,0 +1,22 @@
+.add-button {
+  background: none;
+  border: 2px solid #FFFFFF;
+  cursor: pointer;
+  box-sizing: border-box;
+  border-radius: 2px;
+  min-width: 150px;
+  min-height: 50px;
+  justify-self: flex-end;
+}
+
+.add-button:hover {
+  transition: .3s linear;
+  opacity: .6;
+}
+
+@media (min-width: 300px) and (max-width: 425px) {
+  .add-button {
+    min-width: 282px;
+    margin-top: 36px;
+  }
+}

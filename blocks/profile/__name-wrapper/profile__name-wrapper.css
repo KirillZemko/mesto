@@ -1,0 +1,11 @@
+.profile__name-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 300px) and (max-width: 425px) {
+  .profile__name-wrapper {
+    margin-top: 26px;
+  }
+}
