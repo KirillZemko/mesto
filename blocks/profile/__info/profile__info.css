@@ -3,6 +3,12 @@
   align-items: center;
 }
 
+@media (min-width: 426px) and (max-width: 704px) {
+  .profile__info {
+    flex-direction: column;
+  }
+}
+
 @media (min-width: 300px) and (max-width: 425px) {
   .profile__info {
     flex-direction: column;

@@ -6,3 +6,9 @@
   border: none;
   margin-top: 54px;
 }
+
+@media (min-width: 320px) and (max-width: 425px) {
+  .form__profile-info {
+    margin-top: 75px;
+  }
+}

@@ -1,5 +1,6 @@
 .edit-button {
   background: none;
+  background: url(../../images/edit-button.svg) center no-repeat;
   border: 1px solid #FFFFFF;
   cursor: pointer;
   min-width: 24px;

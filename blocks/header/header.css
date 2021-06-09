@@ -1,5 +1,5 @@
 .header {
-  min-width: 300px;
+  min-width: 320px;
   max-width: 880px;
   width: 100%;
   margin: auto;
@@ -8,14 +8,20 @@
   opacity: 1;
 }
 
-@media (min-width: 426px) and (max-width: 1279px){
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .header {
+    max-width: 880px;
+  }
+}
+
+@media (min-width: 426px) and (max-width: 1023px){
   .header
     {
       max-width: 80%;
     }
 }
 
-@media (min-width: 300px) and (max-width: 425px){
+@media (min-width: 320px) and (max-width: 425px){
   .header
     {
       max-width: 100%;
