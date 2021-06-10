@@ -67,28 +67,28 @@
       <img class="element__image" src="./images/dombai.jpg" alt="Домбай">
       <div class="element__desription">
         <h2 class="element__title">Карачаево-Черкесия</h2>
-        <button class="element__like" href="#"></button>
+        <button class="element__like"></button>
       </div>
     </div>
   </section>
+  <!-- popup -->
+  <div class="popup">
+    <div class="popup__container">
+      <a href="#" class="popup__close-button"></a>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form">
+        <fieldset class="form__profile-info">
+          <input class="form__input form__input_name" placeholder="Жак Ив Кусто" type="text"  id="input-name">
+          <input class="form__input form__input_job" placeholder="Исследователь океана" type="text" id="input-job">
+          <button class="popup__button" type="submit">Сохранить</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
 </main>
 <footer class="footer">
   <p class="footer__title">&copy; 2021 Mesto Russia</p>
 </footer>
-<!-- popup -->
-<div class="popup" id="popup">
-  <div class="popup__container">
-    <a href="#" class="popup__close-button"></a>
-    <h2 class="popup__title">Редактировать профиль</h2>
-    <form class="popup__form" type="submit">
-      <fieldset class="form__profile-info">
-        <input class="form__input form__input-name" placeholder="Жак Ив Кусто" type="text"  id="input-name">
-        <input class="form__input form__input-job" placeholder="Исследователь океана" type="text" id="input-job">
-        <button class="popup__button" type="submit">Сохранить</button>
-      </fieldset>
-    </form>
-  </div>
-</div>
-<script src="./js/script.js"></script>
+<script src="./scripts/index.js"></script>
 </body>
 </html>

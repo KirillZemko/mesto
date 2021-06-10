@@ -2,8 +2,8 @@ let popup = document.querySelector('.popup');
 let editBtn = document.querySelector('.edit-button');
 let closeBtn = document.querySelector('.popup__close-button');
 let formElement = document.querySelector('.popup__form');
-let nameInput = document.querySelector('.form__input-name');
-let jobInput = document.querySelector('.form__input-job');
+let nameInput = document.querySelector('.form__input_name');
+let jobInput = document.querySelector('.form__input_job');
 let profileName = document.querySelector('.profile__name')
 let profileJob = document.querySelector('.profile__job')
 
@@ -20,7 +20,7 @@ function closePopup() {
 }
 
 function formSubmitHandler (evt) {
-    // Эта строчка отменяет стандартную отправку формы. Так мы можем определить свою логику отправки. О том, как это делать, расскажем позже.
+    // Эта строчка отменяет стандартную отправку формы. Так мы можем определить свою логику отправки.
     evt.preventDefault();
 
     profileName.textContent = `${nameInput.value}`;

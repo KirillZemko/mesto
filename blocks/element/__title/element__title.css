@@ -6,7 +6,6 @@
   line-height: 29px;
   color: #000000;
   margin-left: 21px;
-
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; /* Добавляем многоточие */

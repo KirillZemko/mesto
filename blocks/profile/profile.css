@@ -1,5 +1,5 @@
 .profile {
-  min-width: 300px;
+  min-width: 320px;
   max-width: 1280px;
   width: 100%;
   margin-top: 40px;
@@ -31,7 +31,7 @@
   }
 }
 
-@media (min-width: 300px) and (max-width: 425px){
+@media (min-width: 320px) and (max-width: 425px){
   .profile
     {
       flex-direction: column;
