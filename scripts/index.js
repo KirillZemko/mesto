@@ -8,9 +8,9 @@ let profileName = document.querySelector('.profile__name')
 let profileJob = document.querySelector('.profile__job')
 
 function editPopup() {
-  popup.classList.add('popup_opened');
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
+  popup.classList.add('popup_opened');
 }
 
 function closePopup() {
@@ -21,8 +21,8 @@ function formSubmitHandler (evt) {
     // Эта строчка отменяет стандартную отправку формы. Так мы можем определить свою логику отправки.
     evt.preventDefault();
 
-    profileName.textContent = `${nameInput.value}`;
-    profileJob.textContent = `${jobInput.value}`;
+    profileName.textContent = nameInput.value;
+    profileJob.textContent = jobInput.value;
 
     closePopup();
 }
