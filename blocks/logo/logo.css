@@ -4,9 +4,8 @@
   background-size: contain;
   min-width: 142px;
   min-height: 33px;
-  display: block;
   margin-bottom: 41px;
-  display: block;
+  display: inline-block;
   transition: .3s linear;
 }
 
