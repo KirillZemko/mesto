@@ -10,85 +10,85 @@
   <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
-<header class="header">
-  <a href="#" class="logo"></a>
-</header>
-<main class="content">
-  <section class="profile">
-    <div class="profile__info">
-      <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
-        <div class="profile__text-wrapper">
-          <div class="profile__name-wrapper">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="edit-button"></button>
+  <header class="header">
+    <a href="#" class="logo"></a>
+  </header>
+  <main class="content">
+    <section class="profile">
+      <div class="profile__info">
+        <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
+          <div class="profile__text-wrapper">
+            <div class="profile__name-wrapper">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button class="edit-button"></button>
+            </div>
+            <p class="profile__job">Исследователь океана</p>
           </div>
-          <p class="profile__job">Исследователь океана</p>
+      </div>
+      <button class="add-button"></button>
+    </section>
+    <section class="elements">
+      <div class="element">
+        <img class="element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
+        <div class="element__desription">
+          <h2 class="element__title">Карачаевск</h2>
+          <a class="element__like" href="#"></a>
         </div>
-    </div>
-    <button class="add-button"></button>
-  </section>
-  <section class="elements">
-    <div class="element">
-      <img class="element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
-      <div class="element__desription">
-        <h2 class="element__title">Карачаевск</h2>
-        <a class="element__like" href="#"></a>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/elbrus.jpg" alt="Эльбрус">
+        <div class="element__desription">
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <a class="element__like" href="#"></a>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/dombai.jpg" alt="Домбай">
+        <div class="element__desription">
+          <h2 class="element__title">Домбай</h2>
+          <a class="element__like" href="#"></a>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
+        <div class="element__desription">
+          <h2 class="element__title">Карачаевск</h2>
+          <a class="element__like" href="#"></a>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/elbrus.jpg" alt="Эльбрус">
+        <div class="element__desription">
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <a class="element__like" href="#"></a>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/dombai.jpg" alt="Домбай">
+        <div class="element__desription">
+          <h2 class="element__title">Карачаево-Черкесия</h2>
+          <button class="element__like"></button>
+        </div>
+      </div>
+    </section>
+    <!-- popup -->
+    <div class="popup">
+      <div class="popup__container">
+        <a href="#" class="popup__close-button"></a>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form">
+          <fieldset class="popup__profile-info">
+            <input class="popup__input popup__input_name" placeholder="" type="text">
+            <input class="popup__input popup__input_job" placeholder="" type="text">
+            <button class="popup__button" type="submit">Сохранить</button>
+          </fieldset>
+        </form>
       </div>
     </div>
-    <div class="element">
-      <img class="element__image" src="./images/elbrus.jpg" alt="Эльбрус">
-      <div class="element__desription">
-        <h2 class="element__title">Гора Эльбрус</h2>
-        <a class="element__like" href="#"></a>
-      </div>
-    </div>
-    <div class="element">
-      <img class="element__image" src="./images/dombai.jpg" alt="Домбай">
-      <div class="element__desription">
-        <h2 class="element__title">Домбай</h2>
-        <a class="element__like" href="#"></a>
-      </div>
-    </div>
-    <div class="element">
-      <img class="element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
-      <div class="element__desription">
-        <h2 class="element__title">Карачаевск</h2>
-        <a class="element__like" href="#"></a>
-      </div>
-    </div>
-    <div class="element">
-      <img class="element__image" src="./images/elbrus.jpg" alt="Эльбрус">
-      <div class="element__desription">
-        <h2 class="element__title">Гора Эльбрус</h2>
-        <a class="element__like" href="#"></a>
-      </div>
-    </div>
-    <div class="element">
-      <img class="element__image" src="./images/dombai.jpg" alt="Домбай">
-      <div class="element__desription">
-        <h2 class="element__title">Карачаево-Черкесия</h2>
-        <button class="element__like"></button>
-      </div>
-    </div>
-  </section>
-  <!-- popup -->
-  <div class="popup">
-    <div class="popup__container">
-      <a href="#" class="popup__close-button"></a>
-      <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form">
-        <fieldset class="popup__profile-info">
-          <input class="popup__input popup__input_name" placeholder="" type="text">
-          <input class="popup__input popup__input_job" placeholder="" type="text">
-          <button class="popup__button" type="submit">Сохранить</button>
-        </fieldset>
-      </form>
-    </div>
-  </div>
-</main>
-<footer class="footer">
-  <p class="footer__title">&copy; 2021 Mesto Russia</p>
-</footer>
-<script src="./scripts/index.js"></script>
+  </main>
+  <footer class="footer">
+    <p class="footer__title">&copy; 2021 Mesto Russia</p>
+  </footer>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>
