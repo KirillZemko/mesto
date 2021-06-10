@@ -1,10 +1,10 @@
-.form__input {
+.popup__input {
   margin-bottom: 30px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding-bottom: 13px;
 }
 
-.form__input:last-of-type {
+.popup__input:last-of-type {
   margin-bottom: 0;
 }
