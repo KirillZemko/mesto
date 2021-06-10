@@ -3,11 +3,14 @@
   background: url(../../../images/close-icon.svg);
   background-size: contain;
   background-repeat: no-repeat;
-  min-width: 40px;
-  min-height: 40px;
+  min-width: 50px;
+  min-height: 50px;
   position: absolute;
-  top: -35px;
-  right: -35px;
+  top: -40px;
+  right: -40px;
+  border: none;
+  cursor: pointer;
+  transition: .3s linear;
 }
 
 .popup__close-button:hover {

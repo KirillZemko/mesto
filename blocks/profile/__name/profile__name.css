@@ -14,7 +14,7 @@
   }
 }
 
-@media (min-width: 300px) and (max-width: 425px) {
+@media (min-width: 320px) and (max-width: 425px) {
   .profile__name {
     font-size: 27px;
     line-height: 33px;

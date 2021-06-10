@@ -6,6 +6,8 @@
   min-height: 33px;
   display: block;
   margin-bottom: 41px;
+  display: block;
+  transition: .3s linear;
 }
 
 .logo:hover {
@@ -13,10 +15,10 @@
   opacity: .6;
 }
 
-@media (min-width: 300px) and (max-width: 425px){
+@media (min-width: 320px) and (max-width: 425px){
   .logo {
-      width: 103.74px;
-      height: 24.4px;
+      min-width: 103.74px;
+      min-height: 24.4px;
       margin-left: 27px;
       margin-bottom: 31.6px;
     }
