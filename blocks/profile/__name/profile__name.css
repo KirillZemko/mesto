@@ -6,11 +6,24 @@
   line-height: 48px;
   color: #FFFFFF;
   margin: 0;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 400px;
 }
+
+@media (min-width: 320px) and (max-width: 425px) {
+  .profile__name {
+    max-width: 200px;
+  }
+}
+
 
 @media (min-width: 426px) and (max-width: 1023px) {
   .profile__name {
     font-size: 30px;
+    max-width: 250px;
   }
 }
 
