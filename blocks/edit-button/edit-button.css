@@ -16,5 +16,7 @@
 @media (min-width: 320px) and (max-width: 425px) {
   .edit-button {
     margin-left: 10px;
+    min-width: 18px;
+    min-height: 18px;
   }
 }
