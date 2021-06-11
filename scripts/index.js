@@ -7,6 +7,19 @@ let jobInput = document.querySelector('.popup__input_type_job');
 let profileName = document.querySelector('.profile__name');
 let profileJob = document.querySelector('.profile__job');
 let popupOverflow = document.querySelector('.popup');
+let likeButtons = document.querySelectorAll('.element__like');
+
+// функция добавляет активное состояния при нажатии на кнопку like
+function addLikeFill(likeButtons) {
+  for (let i = 0; i < likeButtons.length; i++) {
+    likeButtons[i].addEventListener('click', function() {
+      likeButtons[i].classList.toggle('element__like_type_active');
+    })
+  }
+}
+
+addLikeFill(likeButtons);
+
 
 // функция открытия popup окна и добавления значенний в input-ы из profileName
 function editPopup() {
