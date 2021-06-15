@@ -1,4 +1,4 @@
-.elements {
+.places {
   margin-top: 51px;
   display: grid;
   grid-template-columns: repeat(3, minmax(282px, 1fr));

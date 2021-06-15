@@ -1,4 +1,4 @@
-.element__like {
+.place__like {
   background: url(../../../images/like.svg) center no-repeat;
   background-size: 100%;
   cursor: pointer;
@@ -11,6 +11,6 @@
   margin-right: 20px;
 }
 
-.element__like:hover {
+.place__like:hover {
   transform: scale(1.3);
 }

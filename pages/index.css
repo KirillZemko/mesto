@@ -18,15 +18,15 @@
 @import url(../blocks/add-button/add-button.css);
 @import url(../blocks/profile/__text-wrapper/profile__text-wrapper.css);
 @import url(../blocks/profile/__name-wrapper/profile__name-wrapper.css);
-/* elements */
-@import url(../blocks/elements/elements.css);
-/* element */
-@import url(../blocks/element/element.css);
-@import url(../blocks/element/__image/element__image.css);
-@import url(../blocks/element/__desription/element__desription.css);
-@import url(../blocks/element/__title/element__title.css);
-@import url(../blocks/element/__like/element__like.css);
-@import url(../blocks/element/__like/_active/element__like_type_active.css);
+/* places */
+@import url(../blocks/places/places.css);
+/* place */
+@import url(../blocks/place/place.css);
+@import url(../blocks/place/__desription/place__desription.css);
+@import url(../blocks/place/__image/place__image.css);
+@import url(../blocks/place/__like/place__like.css);
+@import url(../blocks/place/__like/_active/place__like_type_active.css);
+@import url(../blocks/place/__title/place__title.css);
 /* footer */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__title/footer__title.css);
