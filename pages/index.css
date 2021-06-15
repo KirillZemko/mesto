@@ -28,6 +28,7 @@
 @import url(../blocks/place/__like/_active/place__like_type_active.css);
 @import url(../blocks/place/__title/place__title.css);
 @import url(../blocks/place/__trash-btn/place__trash-btn.css);
+@import url(../blocks/place/__image-link/place__image-link.css);
 /* footer */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__title/footer__title.css);

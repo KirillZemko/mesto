@@ -1,0 +1,7 @@
+.place__image-link {
+  transition: .3s ease-in;
+}
+
+.place__image-link:hover {
+  opacity: .9;
+}

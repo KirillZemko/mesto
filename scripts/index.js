@@ -12,6 +12,8 @@ let popupAddCard = document.querySelector('.popup__add-card');
 let closeBtnAddCard = document.querySelector('.popup__close-button_type_add-card');
 let createBtn = document.querySelector('.popup__button_type-add-card');
 let addCardBtn = document.querySelector('.add-button');
+let cardTitle = document.querySelector('.popup__input_type_title');
+let cardUrl = document.querySelector('.popup__input_type_url');
 
 function showAddCardPopup() {
   popupAddCard.classList.add('popup__add-card_opened');
