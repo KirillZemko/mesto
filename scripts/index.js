@@ -6,13 +6,24 @@ let nameInput = document.querySelector('.popup__input_type_name');
 let jobInput = document.querySelector('.popup__input_type_job');
 let profileName = document.querySelector('.profile__name');
 let profileJob = document.querySelector('.profile__job');
-let popupOverflow = document.querySelector('.popup');
+let popupOverflow = document.querySelectorAll('.popup');
 let likeButtons = document.querySelectorAll('.place__like');
+let popupAddCard = document.querySelector('.popup__add-card');
+let closeBtnAddCard = document.querySelector('.popup__close-button_type_add-card');
+let createBtn = document.querySelector('.popup__button_type-add-card');
+let addCardBtn = document.querySelector('.add-button');
+
+function showAddCardPopup() {
+  popupAddCard.classList.add('popup__add-card_opened');
+}
+
+function closeAddCardPopup() {
+  popupAddCard.classList.remove('popup__add-card_opened');
+}
 
 // toggle состояния кнопки like
 function likeButtonToggler(arr) {
   for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i])
     arr[i].addEventListener('click', function() {
       arr[i].classList.toggle('place__like_type_active');
     })
@@ -22,7 +33,7 @@ function likeButtonToggler(arr) {
 likeButtonToggler(likeButtons);
 
 // функция открытия popup окна и добавления значенний в input-ы из profileName
-function editPopup() {
+function showEditPopup() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 
@@ -30,7 +41,7 @@ function editPopup() {
 }
 
 // функция закрытия окна popup
-function closePopup() {
+function closeEditPopup() {
   popup.classList.remove('popup_opened');
 }
 
@@ -42,7 +53,7 @@ function formSubmitHandler(evt) {
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
 
-    closePopup();
+    closeEditPopup();
 }
 
 // функция закрытия popup по клику по затемненной области
@@ -51,10 +62,15 @@ function closePopupByClickOnOverflow(evt) {
      return;
    }
 
-  closePopup();
+   closeEditPopup();
+   closeAddCardPopup();
 }
 
-editBtn.addEventListener('click', editPopup);
-closeBtn.addEventListener('click', closePopup);
+editBtn.addEventListener('click', showEditPopup);
+closeBtn.addEventListener('click', closeEditPopup);
 formElement.addEventListener('submit', formSubmitHandler);
-popupOverflow.addEventListener('click', closePopupByClickOnOverflow);
+popupOverflow[0].addEventListener('click', closePopupByClickOnOverflow); // editPopup
+popupOverflow[1].addEventListener('click', closePopupByClickOnOverflow); // // addCardPopup
+addCardBtn.addEventListener('click', showAddCardPopup);
+closeBtnAddCard.addEventListener('click', closeAddCardPopup);
+

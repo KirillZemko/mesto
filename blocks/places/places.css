@@ -8,14 +8,14 @@
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .elements {
+  .places {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
-  .elements {
+  .places {
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(1, 1fr);
     margin-right: 19px;
