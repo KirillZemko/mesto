@@ -28,7 +28,7 @@
       <button class="add-button" type="button" aria-label="Добавить"></button>
     </section>
     <section class="places">
-      <article class="place">
+      <!-- <article class="place">
         <a class="place__image-link" href="#">
           <img class="place__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
         </a>
@@ -87,7 +87,7 @@
           <button class="place__like" aria-label="лайк" type="button"></button>
         </div>
         <button class="place__trash-btn" type="button"></button>
-      </article>
+      </article> -->
     </section>
     <!-- edit-profile popup -->
     <div class="popup">
@@ -107,12 +107,12 @@
     <div class="popup popup__add-card">
       <div class="popup__container">
         <button class="popup__close-button popup__close-button_type_add-card" aria-label="закрыть"></button>
-        <h2 class="popup__title popup__title_type_add-card">Название 1</h2>
+        <h2 class="popup__title popup__title_type_add-card">Название</h2>
         <form class="popup__form popup__form_type_add-card" name="popup-form-add-card">
           <fieldset class="popup__profile-info popup__profile-info_type_add-card">
             <input class="popup__input popup__input_type_title" placeholder="Название" type="text" name="popup-input-title">
             <input class="popup__input popup__input_type_url" placeholder="Ссылка на картинку" type="text" name="popup-input-url">
-            <button class="popup__button popup__button_type-add-card" type="submit">Создать</button>
+            <button class="popup__button popup__button_type-add-card" type="button">Создать</button>
           </fieldset>
         </form>
       </div>
@@ -121,6 +121,20 @@
   <footer class="footer">
     <p class="footer__title">&copy; 2021 Mesto Russia</p>
   </footer>
+
+  <template id="place-template">
+    <article class="place">
+      <a class="place__image-link" href="#">
+        <img class="place__image" src="./images/dombai.jpg" alt="">
+      </a>
+      <div class="place__desription">
+        <h2 class="place__title"></h2>
+        <button class="place__like" aria-label="лайк" type="button"></button>
+      </div>
+      <button class="place__trash-btn" type="button"></button>
+    </article>
+  </template>
+
   <script src="./scripts/index.js"></script>
 </body>
 </html>
