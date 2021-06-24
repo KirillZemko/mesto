@@ -43,6 +43,21 @@ const initialCards = [
 const placesContainer = document.querySelector('.places');
 const addButton = document.querySelector('.popup__button_type-add-card');
 
+// функция отображения карточек из массива
+function showCards(arr) {
+  arr.forEach(element => {
+    const placeTemplate = document.querySelector('#place-template').content;
+    const placeElement = placeTemplate.querySelector('.place').cloneNode(true);
+
+    placeElement.querySelector('.place__title').textContent = element.name;
+    placeElement.querySelector('.place__image').src = element.link;
+
+    placesContainer.append(placeElement);
+  });
+}
+
+showCards(initialCards);
+
 // функция добавления новой карточки
 function addPlace(titleValue, imgValue) {
   const placeTemplate = document.querySelector('#place-template').content;
@@ -51,7 +66,7 @@ function addPlace(titleValue, imgValue) {
   placeElement.querySelector('.place__title').textContent = titleValue;
   placeElement.querySelector('.place__image').src = imgValue;
 
-  placesContainer.append(placeElement);
+  placesContainer.prepend(placeElement);
 }
 
 // обработчик события добавления новой карточки

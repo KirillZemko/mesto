@@ -2,7 +2,8 @@
   margin-top: 51px;
   display: grid;
   grid-template-columns: repeat(3, minmax(282px, 1fr));
-  grid-template-rows: repeat(2, minmax(361px, 1fr));
+  /* grid-template-rows: repeat(2, minmax(361px, 1fr)); */
+  grid-template-rows: repeat(2, 361px);
   gap: 20px 16px;
   justify-items: center;
 }
