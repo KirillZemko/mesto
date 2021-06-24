@@ -43,7 +43,7 @@ const initialCards = [
 const placesContainer = document.querySelector('.places');
 const addButton = document.querySelector('.popup__button_type-add-card');
 
-// функция добавления заголовка и изображения новой карточки
+// функция добавления новой карточки
 function addPlace(titleValue, imgValue) {
   const placeTemplate = document.querySelector('#place-template').content;
   const placeElement = placeTemplate.querySelector('.place').cloneNode(true);
