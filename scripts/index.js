@@ -41,7 +41,7 @@ const initialCards = [
 ];
 
 const placesContainer = document.querySelector('.places');
-const addButton = document.querySelector('.popup__button_type-add-card');
+const addBtn = document.querySelector('.popup__button_type-add-card');
 
 // функция отображения карточек из массива
 function showCards(arr) {
@@ -51,6 +51,9 @@ function showCards(arr) {
 
     placeElement.querySelector('.place__title').textContent = element.name;
     placeElement.querySelector('.place__image').src = element.link;
+    placeElement.querySelector('.place__like').addEventListener('click', function (evt) {
+      evt.target.classList.toggle('place__like_type_active');
+    })
 
     placesContainer.append(placeElement);
   });
@@ -70,7 +73,7 @@ function addPlace(titleValue, imgValue) {
 }
 
 // обработчик события добавления новой карточки
-addButton.addEventListener('click', function() {
+addBtn.addEventListener('click', function() {
   const title = document.querySelector('.popup__input_type_title');
   const img = document.querySelector('.popup__input_type_url');
 
