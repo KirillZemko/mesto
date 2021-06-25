@@ -38,8 +38,17 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+const formCardSubmit = document.querySelector('.popup__form_type_add-card');
 const placesContainer = document.querySelector('.places');
 const placeTemplateContent = document.querySelector('#place-template').content;
+const titleInput = document.querySelector('.popup__input_type_title');
+const linkInput = document.querySelector('.popup__input_type_url');
+const submitBtn = document.querySelector('.popup__button_type-add-card');
+
+// функция добавляет addEventListener на кнопку удаления
+function setEventListener(placeElement) {
+  placeElement.querySelector('.place__trash-btn').addEventListener('click', handleDel);
+}
 
 // функция добавления данных из массива в template карточки
 function renderItem(initialCards) {
@@ -50,6 +59,8 @@ function renderItem(initialCards) {
   placeTitleElement.textContent = initialCards.name;
   placeImgElement.src = initialCards.link;
 
+  setEventListener(placeElement);
+
   placesContainer.append(placeElement);
 }
 
@@ -59,6 +70,23 @@ function renderItems(items) {
 }
 
 renderItems(initialCards);
+
+function handleSubmit() {
+
+}
+
+formCardSubmit.addEventListener('submit', evt => {
+  evt.preventDefault();
+  handleSubmit();
+
+  console.log('submit');
+});
+
+// функция удаления карточки place
+function handleDel(evt) {
+  const itemElement = evt.target.closest('.place');
+  itemElement.remove();
+}
 
 //  функция открытия editPopup
 function editPopup() {
