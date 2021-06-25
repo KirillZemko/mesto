@@ -12,7 +12,6 @@ const closeBtnNewItemPopup = document.querySelector('.popup__close-button_type_a
 const newItemBtn = document.querySelector('.add-button');
 const cardTitle = document.querySelector('.popup__input_type_title');
 const cardUrl = document.querySelector('.popup__input_type_url');
-
 const initialCards = [
   {
     name: 'Архыз',
@@ -39,50 +38,27 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
 const placesContainer = document.querySelector('.places');
-const addBtn = document.querySelector('.popup__button_type-add-card');
+const placeTemplateContent = document.querySelector('#place-template').content;
 
-// функция отображения карточек из массива
-function showCards(arr) {
-  arr.forEach(element => {
-    const placeTemplate = document.querySelector('#place-template').content;
-    const placeElement = placeTemplate.querySelector('.place').cloneNode(true);
+// функция добавления данных из массива в template карточки
+function renderItem(initialCards) {
+  const placeElement = placeTemplateContent.cloneNode(true);
+  const placeTitleElement = placeElement.querySelector('.place__title');
+  const placeImgElement = placeElement.querySelector('.place__image');
 
-    placeElement.querySelector('.place__title').textContent = element.name;
-    placeElement.querySelector('.place__image').src = element.link;
-    placeElement.querySelector('.place__like').addEventListener('click', function (evt) {
-      evt.target.classList.toggle('place__like_type_active');
-    })
+  placeTitleElement.textContent = initialCards.name;
+  placeImgElement.src = initialCards.link;
 
-    placesContainer.append(placeElement);
-  });
+  placesContainer.append(placeElement);
 }
 
-showCards(initialCards);
-
-// функция добавления новой карточки
-function addPlace(titleValue, imgValue) {
-  const placeTemplate = document.querySelector('#place-template').content;
-  const placeElement = placeTemplate.querySelector('.place').cloneNode(true);
-
-  placeElement.querySelector('.place__title').textContent = titleValue;
-  placeElement.querySelector('.place__image').src = imgValue;
-
-  placesContainer.prepend(placeElement);
+// функция отображения всех карточек из массива
+function renderItems(items) {
+  items.forEach(renderItem);
 }
 
-// обработчик события добавления новой карточки
-addBtn.addEventListener('click', function() {
-  const title = document.querySelector('.popup__input_type_title');
-  const img = document.querySelector('.popup__input_type_url');
-
-  addPlace(title.value, img.value);
-  closeNewItemPopup();
-
-  title.value = '';
-  img.value = '';
-});
+renderItems(initialCards);
 
 //  функция открытия editPopup
 function editPopup() {
@@ -133,3 +109,56 @@ closeBtnEditPopup.addEventListener('click', closeEditPopup);
 formElement.addEventListener('submit', formSubmitHandler);
 newItemBtn.addEventListener('click', newItemPopup);
 closeBtnNewItemPopup.addEventListener('click', closeNewItemPopup);
+
+// функция отображения карточек из массива
+// function renderCards(arr) {
+//   arr.forEach(element => {
+//     const placeTemplate = document.querySelector('#place-template').content; // выбираем шаблон и записываем содержимое в переменную placeTemplate
+//     const placeElement = placeTemplate.querySelector('.place').cloneNode(true); // клонируем содержимое шаблона в переменную placeElement, чтобы создать новую карточку
+
+//     // наполняем содержимым
+//     placeElement.querySelector('.place__title').textContent = element.name;
+//     placeElement.querySelector('.place__image').src = element.link;
+
+//     // placeElement.querySelector('.place__like').addEventListener('click', function(evt) {
+//     //   evt.target.classList.toggle('place__like_type_active');
+//     // })
+
+//     placesContainer.append(placeElement); // добавляем в placesContainer элемент placeElement
+//   });
+// }
+
+// renderCards(initialCards);
+
+// function like(arr) {
+//   arr.addEventListener('click', function(evt) {
+//     evt.target.classList.toggle('place__like_type_active');
+//   })
+// }
+
+// like(initialCards);
+
+// функция добавления новой карточки
+// function addPlace(titleValue, imgValue) {
+//   const placeTemplate = document.querySelector('#place-template').content;
+//   const placeElement = placeTemplate.querySelector('.place').cloneNode(true);
+
+//   placeElement.querySelector('.place__title').textContent = titleValue;
+//   placeElement.querySelector('.place__image').src = imgValue;
+
+//   placesContainer.prepend(placeElement);
+// }
+
+// исправить на событие submit
+// addBtn.addEventListener('click', function(evt) {
+//   evt.preventDefault();
+
+//   const title = document.querySelector('.popup__input_type_title');
+//   const img = document.querySelector('.popup__input_type_url');
+
+//   addPlace(title.value, img.value);
+//   closeNewItemPopup();
+
+//   title.value = '';
+//   img.value = '';
+// });
