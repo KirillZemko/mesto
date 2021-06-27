@@ -71,10 +71,6 @@ function renderItems(items) {
 
 renderItems(initialCards);
 
-function handleSubmit() {
-
-}
-
 formCardSubmit.addEventListener('submit', evt => {
   evt.preventDefault();
   handleSubmit();
@@ -82,18 +78,9 @@ formCardSubmit.addEventListener('submit', evt => {
   console.log('submit');
 });
 
-// функция удаления карточки place
-function handleDel(evt) {
-  const itemElement = evt.target.closest('.place');
-  itemElement.remove();
-}
-
-//  функция открытия editPopup
-function editPopup() {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
-
-  popup.classList.add('popup_opened');
+// функция toggler открытия popup
+function popupToggle(selectedPopup) {
+  selectedPopup.classList.toggle('popup_opened');
 }
 
 // функция закрытия editPopup
@@ -101,14 +88,15 @@ function closeEditPopup() {
   popup.classList.remove('popup_opened');
 }
 
-//  функция открытия editPopup
-function newItemPopup() {
-  popupAddCard.classList.add('popup__add-card_opened');
+//  функция закрытия editPopup
+function closeNewItemPopup() {
+  popupAddCard.classList.remove('popup_opened');
 }
 
-//  функция закрытия editPopup
-function closeNewItemPopup(evt) {
-  popupAddCard.classList.remove('popup__add-card_opened');
+// функция удаления карточки place
+function handleDel(evt) {
+  const itemElement = evt.target.closest('.place');
+  itemElement.remove();
 }
 
 // лайк карточки
@@ -132,10 +120,10 @@ function formSubmitHandler(evt) {
     closeEditPopup();
 }
 
-editBtn.addEventListener('click', editPopup);
+editBtn.addEventListener('click', () => (popupToggle(popup)));
 closeBtnEditPopup.addEventListener('click', closeEditPopup);
 formElement.addEventListener('submit', formSubmitHandler);
-newItemBtn.addEventListener('click', newItemPopup);
+newItemBtn.addEventListener('click', () => (popupToggle(popupAddCard)));
 closeBtnNewItemPopup.addEventListener('click', closeNewItemPopup);
 
 // функция отображения карточек из массива
