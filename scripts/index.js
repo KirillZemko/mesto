@@ -11,7 +11,7 @@ const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
 
 // переменные popupAddCard
-const popupAddCard = document.querySelector('.popup__add-card');
+const popupAddCard = document.querySelector('.popup_add-card');
 const closeBtnNewItemPopup = document.querySelector('.popup__close-button_type_add-card');
 const formPopupAddCard = document.querySelector('.popup__form_type_add-card');
 const newItemBtn = document.querySelector('.add-button');
