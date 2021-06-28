@@ -15,8 +15,6 @@ const popupAddCard = document.querySelector('.popup__add-card');
 const closeBtnNewItemPopup = document.querySelector('.popup__close-button_type_add-card');
 const formPopupAddCard = document.querySelector('.popup__form_type_add-card');
 const newItemBtn = document.querySelector('.add-button');
-// const cardTitle = document.querySelector('.popup__input_type_title');
-// const cardUrl = document.querySelector('.popup__input_type_url');
 const titleInput = document.querySelector('.popup__input_type_title');
 const linkInput = document.querySelector('.popup__input_type_url');
 const submitBtn = document.querySelector('.popup__button_type-add-card');
@@ -51,12 +49,29 @@ const initialCards = [
 
 // переменные place-template
 const placesContainer = document.querySelector('.places');
-const placeTemplateContent = document.querySelector('#place-template').content;
+const placeTemplateContent = document.querySelector('.place-template').content;
+
+// переменные viewPopup
+const viewPopup = document.querySelector('.popup_type_view');
+const viewImage = document.querySelector('.popup__image');
+const viewAlt = document.querySelector('.popup__description');
+const closeBtnViewPopup = document.querySelector('.popup__close-button_type_view');
+closeBtnViewPopup.addEventListener('click', () => (popupToggle(viewPopup)));
 
 // функция добавляет addEventListener на кнопку удаления
 function setEventListener(placeElement) {
   placeElement.querySelector('.place__trash-btn').addEventListener('click', handleDel);
   placeElement.querySelector('.place__like').addEventListener('click', likeToggle);
+  placeElement.querySelector('.place__image').addEventListener('click', showImagePopup);
+}
+
+function showImagePopup(evt) {
+  evt.preventDefault();
+
+  const image = evt.target.closest('.place__image');
+  viewImage.src = image.src;
+
+  popupToggle(viewPopup);
 }
 
 // функция добавления данных из массива в template карточки
@@ -104,7 +119,7 @@ function formSubmitHandler(evt) {
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
 
-    popup.classList.remove('popup_opened');
+    popupToggle(popupAddCard);
 }
 
 editBtn.addEventListener('click', function() {
@@ -113,14 +128,15 @@ editBtn.addEventListener('click', function() {
 
   popupToggle(popup);
 })
-closeBtnEditPopup.addEventListener('click', () => (popup.classList.remove('popup_opened')));
+
+closeBtnEditPopup.addEventListener('click', () => (popupToggle(popup)));
 formPopupEdit.addEventListener('submit', formSubmitHandler);
 newItemBtn.addEventListener('click', () => (popupToggle(popupAddCard)));
-closeBtnNewItemPopup.addEventListener('click', () => (popupAddCard.classList.remove('popup_opened')));
+closeBtnNewItemPopup.addEventListener('click', () => (popupToggle(popupAddCard)));
 
 // функция добавления новой карточки
 function handleCardSubmit(titleValue, imgValue) {
-  const placeTemplate = document.querySelector('#place-template').content;
+  const placeTemplate = document.querySelector('.place-template').content;
   const placeElement = placeTemplate.querySelector('.place').cloneNode(true);
 
   placeElement.querySelector('.place__title').textContent = titleValue;
@@ -143,5 +159,5 @@ formPopupAddCard.addEventListener('submit', function(evt) {
   title.value = '';
   img.value = '';
 
-  popupAddCard.classList.remove('popup_opened');
+  popupToggle(popupAddCard);
 });
