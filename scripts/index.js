@@ -119,7 +119,7 @@ function formSubmitHandler(evt) {
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
 
-    popupToggle(popupAddCard);
+    popupToggle(popup);
 }
 
 editBtn.addEventListener('click', function() {

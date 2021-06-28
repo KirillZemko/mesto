@@ -4,13 +4,12 @@
   cursor: pointer;
   height: 19.3px;
   width: 18px;
-  right: 10px;
   transition: 0.3s;
   border: none;
   margin-right: 20px;
   position: absolute;
   top: 18px;
-  right: 0;
+  right: 0px;
 }
 
 .place__trash-btn:hover {
