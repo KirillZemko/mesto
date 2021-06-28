@@ -1,16 +1,27 @@
+// переменные popupEdit
 const popup = document.querySelector('.popup');
 const editBtn = document.querySelector('.edit-button');
 const closeBtnEditPopup = document.querySelector('.popup__close-button');
 const formPopupEdit = document.querySelector('.popup__form');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
+
+// переменные профиля
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
+
+// переменные popupAddCard
 const popupAddCard = document.querySelector('.popup__add-card');
 const closeBtnNewItemPopup = document.querySelector('.popup__close-button_type_add-card');
+const formPopupAddCard = document.querySelector('.popup__form_type_add-card');
 const newItemBtn = document.querySelector('.add-button');
-const cardTitle = document.querySelector('.popup__input_type_title');
-const cardUrl = document.querySelector('.popup__input_type_url');
+// const cardTitle = document.querySelector('.popup__input_type_title');
+// const cardUrl = document.querySelector('.popup__input_type_url');
+const titleInput = document.querySelector('.popup__input_type_title');
+const linkInput = document.querySelector('.popup__input_type_url');
+const submitBtn = document.querySelector('.popup__button_type-add-card');
+
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -37,12 +48,10 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-const formPopupAddCard = document.querySelector('.popup__form_type_add-card');
+
+// переменные place-template
 const placesContainer = document.querySelector('.places');
 const placeTemplateContent = document.querySelector('#place-template').content;
-const titleInput = document.querySelector('.popup__input_type_title');
-const linkInput = document.querySelector('.popup__input_type_url');
-const submitBtn = document.querySelector('.popup__button_type-add-card');
 
 // функция добавляет addEventListener на кнопку удаления
 function setEventListener(placeElement) {
@@ -82,6 +91,7 @@ function handleDel(evt) {
   itemElement.remove();
 }
 
+// функция нажатия на кнопку likeBtn
 function likeToggle(evt) {
   const likeBtn = evt.target.closest('.place__like');
   likeBtn.classList.toggle('place__like_type_active');
