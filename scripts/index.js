@@ -1,3 +1,7 @@
+// переменные профиля
+const profileName = document.querySelector('.profile__name');
+const profileJob = document.querySelector('.profile__job');
+
 // переменные popupEdit
 const popupEdit = document.querySelector('.popup_edit');
 const editBtn = document.querySelector('.edit-button');
@@ -5,10 +9,6 @@ const closeBtnEditPopup = popupEdit.querySelector('.popup__close-button');
 const formPopupEdit = popupEdit.querySelector('.popup__form');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
-
-// переменные профиля
-const profileName = document.querySelector('.profile__name');
-const profileJob = document.querySelector('.profile__job');
 
 // переменные popupAddCard
 const popupAddCard = document.querySelector('.popup_add-card');
@@ -19,10 +19,6 @@ const titleInput = document.querySelector('.popup__input_type_title');
 const linkInput = document.querySelector('.popup__input_type_url');
 const createCardBtn = document.querySelector('.popup__button_type-add-card');
 
-// переменные place-template
-const placesContainer = document.querySelector('.places');
-const placeTemplateContent = document.querySelector('.place-template').content;
-
 // переменные viewPopup
 const viewPopup = document.querySelector('.popup_type_view');
 const viewPopupContainer = document.querySelector('.popup__container_type_image');
@@ -31,19 +27,26 @@ const viewPopupAlt = document.querySelector('.popup__description');
 const closeBtnViewPopup = document.querySelector('.popup__close-button_type_view');
 closeBtnViewPopup.addEventListener('click', () => (togglePopup(viewPopup)));
 
-// функция добавляет addEventListener на кнопку удаления
+// переменные place-template
+const placesContainer = document.querySelector('.places');
+const placeTemplateContent = document.querySelector('.place-template').content;
+
+// функция добавляет слушатель события клика addEventListener на элементы: удалить, like, card-image
 function setEventListener(placeElement) {
   placeElement.querySelector('.place__trash-btn').addEventListener('click', handleDel);
   placeElement.querySelector('.place__like').addEventListener('click', togglerLikeBtn);
   placeElement.querySelector('.place__image').addEventListener('click', showImagePopup);
 }
 
+// функция отображения view-popup
 function showImagePopup(evt) {
   evt.preventDefault();
 
   const image = evt.target.closest('.place__image');
+
   viewImage.src = image.src;
   viewImage.alt = image.alt;
+
   viewPopupAlt.textContent = image.alt;
 
   viewPopupContainer.append(viewPopupAlt);
@@ -123,8 +126,7 @@ formPopupAddCard.addEventListener('submit', function(evt) {
 
   placesContainer.prepend(createCard(titleInput.value, linkInput.value));
 
-  titleInput.value = '';
-  linkInput.value = '';
+  formPopupAddCard.reset();
 
   togglePopup(popupAddCard);
 });
