@@ -1,5 +1,5 @@
 // переменные popupEdit
-const popupEdit = document.querySelector('.popup');
+const popupEdit = document.querySelector('.popup_edit');
 const editBtn = document.querySelector('.edit-button');
 const closeBtnEditPopup = popupEdit.querySelector('.popup__close-button');
 const formPopupEdit = popupEdit.querySelector('.popup__form');
@@ -18,7 +18,6 @@ const newItemBtn = document.querySelector('.add-button');
 const titleInput = document.querySelector('.popup__input_type_title');
 const linkInput = document.querySelector('.popup__input_type_url');
 const createCardBtn = document.querySelector('.popup__button_type-add-card');
-
 
 const initialCards = [
   {
@@ -79,33 +78,24 @@ function showImagePopup(evt) {
   togglePopup(viewPopup);
 }
 
-// function createCard(nameValue, imgValue) {
-//   const placeElement = placeTemplateContent.cloneNode(true);
-//   const placeTitleElement = placeElement.querySelector('.place__title');
-//   const placeImgElement = placeElement.querySelector('.place__image');
-
-//   placeTitleElement.textContent = nameValue.name;
-//   placeImgElement.src = imgValue.link;
-//   placeImgElement.alt = nameValue.name;
-
-//   setEventListener(placeElement);
-
-//   return newCard;
-// }
-
-// функция добавления данных из массива в template карточки
-function renderItem(initialCards) {
+// функция создания карточки из place-template
+function createCard(nameValue, imgValue) {
   const placeElement = placeTemplateContent.cloneNode(true);
   const placeTitleElement = placeElement.querySelector('.place__title');
   const placeImgElement = placeElement.querySelector('.place__image');
 
-  placeTitleElement.textContent = initialCards.name;
-  placeImgElement.src = initialCards.link;
-  placeImgElement.alt = initialCards.name;
+  placeTitleElement.textContent = nameValue;
+  placeImgElement.src = imgValue;
+  placeImgElement.alt = nameValue;
 
   setEventListener(placeElement);
 
-  placesContainer.append(placeElement);
+  return placeElement;
+}
+
+// функция добавления данных из массива в template карточки
+function renderItem(initialCards) {
+  placesContainer.append(createCard(initialCards.name, initialCards.link));
 }
 
 // функция отображения всех карточек из массива
@@ -154,25 +144,11 @@ formPopupEdit.addEventListener('submit', handleProfileFormSubmit);
 newItemBtn.addEventListener('click', () => (togglePopup(popupAddCard)));
 closeBtnNewItemPopup.addEventListener('click', () => (togglePopup(popupAddCard)));
 
-// функция добавления новой карточки
-function handleCardSubmit(titleValue, imgValue) {
-  const placeTemplate = document.querySelector('.place-template').content;
-  const placeElement = placeTemplate.querySelector('.place').cloneNode(true);
-
-  placeElement.querySelector('.place__title').textContent = titleValue;
-  placeElement.querySelector('.place__image').src = imgValue;
-  placeElement.querySelector('.place__image').alt = titleValue;
-
-  setEventListener(placeElement);
-
-  placesContainer.prepend(placeElement);
-}
-
 // добавление новой карточки по клику на кнопку создать
 formPopupAddCard.addEventListener('submit', function(evt) {
   evt.preventDefault();
 
-  handleCardSubmit(titleInput.value, linkInput.value);
+  placesContainer.prepend(createCard(titleInput.value, linkInput.value));
 
   titleInput.value = '';
   linkInput.value = '';
