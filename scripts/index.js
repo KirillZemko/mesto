@@ -1,3 +1,5 @@
+const popup = document.querySelectorAll('.popup');
+
 // переменные профиля
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
@@ -36,6 +38,11 @@ function setEventListener(placeElement) {
   placeElement.querySelector('.place__trash-btn').addEventListener('click', handleDel);
   placeElement.querySelector('.place__like').addEventListener('click', togglerLikeBtn);
   placeElement.querySelector('.place__image').addEventListener('click', showImagePopup);
+}
+
+// функция toggler открытия popup
+function togglePopup(selectedPopup) {
+  selectedPopup.classList.toggle('popup_opened');
 }
 
 // функция отображения view-popup
@@ -81,11 +88,6 @@ function renderItems(items) {
 
 renderItems(initialCards);
 
-// функция toggler открытия popup
-function togglePopup(selectedPopup) {
-  selectedPopup.classList.toggle('popup_opened');
-}
-
 // функция удаления карточки place
 function handleDel(evt) {
   const itemElement = evt.target.closest('.place');
@@ -130,3 +132,11 @@ formPopupAddCard.addEventListener('submit', function(evt) {
 
   togglePopup(popupAddCard);
 });
+
+// function closePopupByClickOnOverlay(popup) {
+//   if (popup.target !== popup.currentTarget) {
+//     return;
+//   }
+
+//   popup.classList.remove('popup_opened');
+// }
