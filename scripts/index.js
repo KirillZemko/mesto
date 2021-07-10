@@ -1,4 +1,4 @@
-const popup = document.querySelectorAll('.popup');
+const popups = document.querySelectorAll('.popup');
 
 // переменные профиля
 const profileName = document.querySelector('.profile__name');
@@ -133,10 +133,11 @@ formPopupAddCard.addEventListener('submit', function(evt) {
   togglePopup(popupAddCard);
 });
 
-// function closePopupByClickOnOverlay(popup) {
-//   if (popup.target !== popup.currentTarget) {
-//     return;
-//   }
-
-//   popup.classList.remove('popup_opened');
-// }
+// слушатель закрытия любого popup по клику на overlay
+popups.forEach((popup) => {
+  popup.addEventListener('click', (evt) => {
+    if (evt.target === evt.currentTarget) {
+      togglePopup(popup);
+    }
+  })
+})
