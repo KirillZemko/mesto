@@ -9,7 +9,7 @@ const mainConfigValidation = {
   errorClassActive: 'popup__input-error_active'
 }
 
-const showInputError = (inputElement, errorMessage) => {
+const showInputError = (inputElement, errorMessage, mainConfigValidation) => {
   const errorElement = inputElement
     .closest(mainConfigValidation.inputSection)
     .querySelector(mainConfigValidation.inputErrorClass);
@@ -23,7 +23,7 @@ const showInputError = (inputElement, errorMessage) => {
   errorInput.classList.add(mainConfigValidation.errorClass);
 }
 
-const hideInputError = (inputElement) => {
+const hideInputError = (inputElement, mainConfigValidation) => {
   const errorElement = inputElement
     .closest(mainConfigValidation.inputSection)
     .querySelector(mainConfigValidation.inputErrorClass);
@@ -42,9 +42,9 @@ const checkInputValidity = (formElement, inputElement) => {
   const errorMessage = inputElement.validationMessage;
 
   if (isInputNotValid) {
-    showInputError(inputElement, errorMessage);
+    showInputError(inputElement, errorMessage, mainConfigValidation);
   } else {
-    hideInputError(inputElement);
+    hideInputError(inputElement, mainConfigValidation);
   }
 }
 
@@ -52,8 +52,10 @@ const toggleButtonState = (inputList, buttonElement) => {
   const hasNotValidInput = inputList.some(inputElement => !inputElement.validity.valid);
 
   if (hasNotValidInput) {
+    buttonElement.setAttribute('disabled', true);
     buttonElement.classList.add(mainConfigValidation.inactiveButtonClass);
   } else {
+    buttonElement.removeAttribute('disabled');
     buttonElement.classList.remove(mainConfigValidation.inactiveButtonClass);
   }
 }
