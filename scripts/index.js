@@ -133,11 +133,18 @@ formPopupAddCard.addEventListener('submit', function(evt) {
   togglePopup(popupAddCard);
 });
 
-// слушатель закрытия любого popup по клику на overlay
+// слушатель закрытия любого popup по клику на overlay и кнопку esc
 popups.forEach((popup) => {
   popup.addEventListener('click', (evt) => {
     if (evt.target === evt.currentTarget) {
       togglePopup(popup);
     }
   })
+
+  document.addEventListener('keyup', (evt) => {
+    if (evt.key === 'Escape') {
+      popup.classList.remove('popup_opened');
+    }
+  })
 })
+
