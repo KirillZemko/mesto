@@ -2,7 +2,7 @@
   background: #FFFFFF;
   border-radius: 10px;
   overflow: hidden;
-  max-width: 282px;
+  width: 282px;
   min-height: 361px;
   position: relative;
 }
