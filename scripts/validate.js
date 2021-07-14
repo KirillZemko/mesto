@@ -37,7 +37,7 @@ const hideInputError = (inputElement, mainConfigValidation) => {
   errorInput.classList.remove(mainConfigValidation.errorClass);
 }
 
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = (formElement, inputElement, mainConfigValidation) => {
   const isInputNotValid = !inputElement.validity.valid;
   const errorMessage = inputElement.validationMessage;
 
@@ -48,7 +48,7 @@ const checkInputValidity = (formElement, inputElement) => {
   }
 }
 
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (inputList, buttonElement, mainConfigValidation) => {
   const hasNotValidInput = inputList.some(inputElement => !inputElement.validity.valid);
 
   if (hasNotValidInput) {
@@ -60,7 +60,7 @@ const toggleButtonState = (inputList, buttonElement) => {
   }
 }
 
-const setEventListeners = (formElement, inputSelector, submitButtonSelector) => {
+const setEventListeners = (formElement, inputSelector, submitButtonSelector, mainConfigValidation) => {
   formElement.addEventListener('submit', (evt) => {
     evt.preventDefault();
   })
@@ -70,19 +70,19 @@ const setEventListeners = (formElement, inputSelector, submitButtonSelector) => 
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', (evt) => {
-      checkInputValidity(formElement, inputElement);
-      toggleButtonState(inputList, buttonElement);
+      checkInputValidity(formElement, inputElement, mainConfigValidation);
+      toggleButtonState(inputList, buttonElement, mainConfigValidation);
     });
   })
 
-  toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement, mainConfigValidation);
 }
 
 const enableValidation = ({formSelector, inputSelector, submitButtonSelector }) => {
   const formList = Array.from(document.querySelectorAll(formSelector));
 
   formList.forEach(formElement => {
-    setEventListeners(formElement, inputSelector, submitButtonSelector);
+    setEventListeners(formElement, inputSelector, submitButtonSelector, mainConfigValidation);
   });
 }
 
