@@ -1,4 +1,4 @@
-// объект со стидями валидации
+// объект со стилями валидации
 const mainConfigValidation = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
