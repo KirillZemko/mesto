@@ -152,7 +152,7 @@ function closePopup(popup) {
 function closeByEsc(evt) {
   if (evt.key === ESC_CODE) {
     const openedPopup = document.querySelector('.popup_opened');
+
     closePopup(openedPopup);
   }
 }
-

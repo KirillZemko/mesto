@@ -1,3 +1,4 @@
+// объект со стидями валидации
 const mainConfigValidation = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -9,6 +10,7 @@ const mainConfigValidation = {
   errorClassActive: 'popup__input-error_active'
 }
 
+// функция отображения ошибок
 const showInputError = (inputElement, errorMessage, mainConfigValidation) => {
   const errorElement = inputElement
     .closest(mainConfigValidation.inputSection)
@@ -23,6 +25,7 @@ const showInputError = (inputElement, errorMessage, mainConfigValidation) => {
   errorInput.classList.add(mainConfigValidation.errorClass);
 }
 
+// функция скрытия ошибок
 const hideInputError = (inputElement, mainConfigValidation) => {
   const errorElement = inputElement
     .closest(mainConfigValidation.inputSection)
@@ -37,6 +40,7 @@ const hideInputError = (inputElement, mainConfigValidation) => {
   errorInput.classList.remove(mainConfigValidation.errorClass);
 }
 
+// проверка введенных данных в input на валидность validity.valid
 const checkInputValidity = (formElement, inputElement, mainConfigValidation) => {
   const isInputNotValid = !inputElement.validity.valid;
   const errorMessage = inputElement.validationMessage;
@@ -48,6 +52,7 @@ const checkInputValidity = (formElement, inputElement, mainConfigValidation) => 
   }
 }
 
+// состояние кнопки
 const toggleButtonState = (inputList, buttonElement, mainConfigValidation) => {
   const hasNotValidInput = inputList.some(inputElement => !inputElement.validity.valid);
 
@@ -60,6 +65,7 @@ const toggleButtonState = (inputList, buttonElement, mainConfigValidation) => {
   }
 }
 
+// слушатель на форму и элементы формы
 const setEventListeners = (formElement, inputSelector, submitButtonSelector, mainConfigValidation) => {
   formElement.addEventListener('submit', (evt) => {
     evt.preventDefault();
@@ -78,7 +84,8 @@ const setEventListeners = (formElement, inputSelector, submitButtonSelector, mai
   toggleButtonState(inputList, buttonElement, mainConfigValidation);
 }
 
-const enableValidation = ({formSelector, inputSelector, submitButtonSelector }) => {
+// основная функция проверки на валидацию
+const enableValidation = ({ formSelector, inputSelector, submitButtonSelector }) => {
   const formList = Array.from(document.querySelectorAll(formSelector));
 
   formList.forEach(formElement => {
