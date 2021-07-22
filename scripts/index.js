@@ -41,7 +41,7 @@ function setEventListener(placeElement) {
 }
 
 // функция отображения view-popup
-function showImagePopup(evt) {
+export function showImagePopup(evt) {
   evt.preventDefault();
 
   const image = evt.target.closest('.place__image');
@@ -57,7 +57,7 @@ function showImagePopup(evt) {
 }
 
 // функция создания карточки из place-template
-function createCard(nameValue, imgValue) {
+function createCard(nameValue, imgValue) { // публичный метод
   const placeElement = placeTemplateContent.cloneNode(true);
   const placeTitleElement = placeElement.querySelector('.place__title');
   const placeImgElement = placeElement.querySelector('.place__image');
@@ -66,31 +66,31 @@ function createCard(nameValue, imgValue) {
   placeImgElement.src = imgValue;
   placeImgElement.alt = nameValue;
 
-  setEventListener(placeElement);
+  setEventListener(placeElement); // приватный метод
 
   return placeElement;
 }
 
 // функция добавления данных из массива в template карточки
-function renderItem(initialCards) {
-  placesContainer.append(createCard(initialCards.name, initialCards.link));
-}
+// function renderItem(initialCards) {
+//   placesContainer.append(createCard(initialCards.name, initialCards.link));
+// }
 
 // функция отображения всех карточек из массива
-function renderItems(items) {
-  items.forEach(renderItem);
-}
+// function renderItems(items) {
+//   items.forEach(renderItem);
+// }
 
-renderItems(initialCards);
+// renderItems(initialCards);
 
 // функция удаления карточки place
-function handleDel(evt) {
+export function handleDel(evt) {
   const itemElement = evt.target.closest('.place');
   itemElement.remove();
 }
 
 // функция нажатия на кнопку likeBtn
-function togglerLikeBtn(evt) {
+export function togglerLikeBtn(evt) {
   const likeBtn = evt.target.closest('.place__like');
   likeBtn.classList.toggle('place__like_type_active');
 }

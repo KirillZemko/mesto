@@ -1,5 +1,5 @@
 // объект со стилями валидации
-const mainConfigValidation = {
+export const mainConfigValidation = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
