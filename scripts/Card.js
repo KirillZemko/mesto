@@ -1,7 +1,6 @@
-import { initialCards } from './initialcards.js'
-import { togglerLikeBtn, handleDel, showImagePopup } from './index.js';
+import { viewPopup, viewPopupContainer, viewImage, viewPopupAlt, openPopup } from './index.js';
 
-class Card {
+export class Card {
   constructor(data, cardSelector) {
     this._name = data.name;
     this._link = data.link;
@@ -19,11 +18,44 @@ class Card {
     return placeElement;
   }
 
+  _togglerLikeBtn() {
+    this._element.querySelector('.place__like').classList.toggle('place__like_type_active');
+  }
+
+  _handelDel() {
+    this._element.querySelector('.place');
+    this._element.remove();
+  }
+
+  _openPopup() {
+    this._element.classList.add('popup_opened');
+    document.addEventListener('keydown', closeByEsc);
+  }
+
+  _showImagePopup() {
+    const image = document.querySelector('.place__image');
+
+    viewImage.src = image.src;
+    viewImage.alt = image.alt;
+
+    viewPopupAlt.textContent = image.alt;
+
+    viewPopupContainer.append(viewPopupAlt);
+
+    openPopup(viewPopup);
+  }
+
   // обработчки событий
   _setEventListener() {
-    this._element.querySelector('.place__like').addEventListener('click', togglerLikeBtn);
-    this._element.querySelector('.place__trash-btn').addEventListener('click', handleDel);
-    this._element.querySelector('.place__image').addEventListener('click', showImagePopup);
+    this._element.querySelector('.place__like').addEventListener('click', () => {
+      this._togglerLikeBtn();
+    });
+    this._element.querySelector('.place__trash-btn').addEventListener('click', () => {
+      this._handelDel();
+    });
+    this._element.querySelector('.place__image').addEventListener('click', () => {
+      this._showImagePopup();
+    });
   }
 
   // подготовка карточки к публикации
@@ -39,14 +71,3 @@ class Card {
     return this._element;
   }
 }
-
-// перебираем объект с карточками
-initialCards.forEach((item) => {
-  // создаем экземпляр карточки
-  const card = new Card(item, '.place-template');
-  // создаем карточку и возвращаем наружу
-  const cardElement = card.generatePlaceCard();
-
-  // добавляем в DOM
-  document.querySelector('.places').append(cardElement);
-})

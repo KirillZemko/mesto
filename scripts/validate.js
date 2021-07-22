@@ -11,7 +11,7 @@ export const mainConfigValidation = {
 }
 
 // функция отображения ошибок
-const showInputError = (inputElement, errorMessage, mainConfigValidation) => {
+export const showInputError = (inputElement, errorMessage, mainConfigValidation) => {
   const errorElement = inputElement
     .closest(mainConfigValidation.inputSection)
     .querySelector(mainConfigValidation.inputErrorClass);
@@ -26,7 +26,7 @@ const showInputError = (inputElement, errorMessage, mainConfigValidation) => {
 }
 
 // функция скрытия ошибок
-const hideInputError = (inputElement, mainConfigValidation) => {
+export const hideInputError = (inputElement, mainConfigValidation) => {
   const errorElement = inputElement
     .closest(mainConfigValidation.inputSection)
     .querySelector(mainConfigValidation.inputErrorClass);

@@ -1,3 +1,6 @@
+import { Card } from './Card.js';
+import { initialCards } from './initialcards.js';
+
 const popups = document.querySelectorAll('.popup');
 const ESC_CODE = 'Escape';
 // переменные профиля
@@ -22,23 +25,16 @@ const linkInput = document.querySelector('.popup__input_type_url');
 const createCardBtn = document.querySelector('.popup__button_type-add-card');
 
 // переменные viewPopup
-const viewPopup = document.querySelector('.popup_type_view');
-const viewPopupContainer = document.querySelector('.popup__container_type_image');
-const viewImage = document.querySelector('.popup__image');
-const viewPopupAlt = document.querySelector('.popup__description');
+export const viewPopup = document.querySelector('.popup_type_view');
+export const viewPopupContainer = document.querySelector('.popup__container_type_image');
+export const viewImage = document.querySelector('.popup__image');
+export const viewPopupAlt = document.querySelector('.popup__description');
 const closeBtnViewPopup = document.querySelector('.popup__close-button_type_view');
 closeBtnViewPopup.addEventListener('click', () => (closePopup(viewPopup)));
 
 // переменные place-template
 const placesContainer = document.querySelector('.places');
 const placeTemplateContent = document.querySelector('.place-template').content;
-
-// функция добавляет слушатель события клика addEventListener на элементы: удалить, like, card-image
-function setEventListener(placeElement) {
-  placeElement.querySelector('.place__trash-btn').addEventListener('click', handleDel);
-  placeElement.querySelector('.place__like').addEventListener('click', togglerLikeBtn);
-  placeElement.querySelector('.place__image').addEventListener('click', showImagePopup);
-}
 
 // функция отображения view-popup
 export function showImagePopup(evt) {
@@ -69,30 +65,6 @@ function createCard(nameValue, imgValue) { // публичный метод
   setEventListener(placeElement); // приватный метод
 
   return placeElement;
-}
-
-// функция добавления данных из массива в template карточки
-// function renderItem(initialCards) {
-//   placesContainer.append(createCard(initialCards.name, initialCards.link));
-// }
-
-// функция отображения всех карточек из массива
-// function renderItems(items) {
-//   items.forEach(renderItem);
-// }
-
-// renderItems(initialCards);
-
-// функция удаления карточки place
-export function handleDel(evt) {
-  const itemElement = evt.target.closest('.place');
-  itemElement.remove();
-}
-
-// функция нажатия на кнопку likeBtn
-export function togglerLikeBtn(evt) {
-  const likeBtn = evt.target.closest('.place__like');
-  likeBtn.classList.toggle('place__like_type_active');
 }
 
 // функция изменяет значения введенных пользователем в input-ы и изменяет profileName, profileJob
@@ -139,7 +111,7 @@ popups.forEach((popup) => {
   })
 })
 
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc);
 }
@@ -156,3 +128,14 @@ function closeByEsc(evt) {
     closePopup(openedPopup);
   }
 }
+
+// перебираем объект с карточками
+initialCards.forEach((item) => {
+  // создаем экземпляр карточки из класса Card
+  const card = new Card(item, '.place-template');
+  // создаем карточку и возвращаем наружу
+  const cardElement = card.generatePlaceCard();
+
+  // добавляем в DOM
+  document.querySelector('.places').append(cardElement);
+})
