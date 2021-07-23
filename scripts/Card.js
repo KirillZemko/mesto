@@ -47,6 +47,7 @@ export class Card {
     openPopup(viewPopup);
   }
 
+  // обработчки событий
   _setEventListener() {
     this._element.querySelector('.place__like').addEventListener('click', () => {
       this._togglerLikeBtn();

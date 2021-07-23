@@ -1,6 +1,16 @@
 import { Card } from './Card.js';
-import { FormValidator, mainConfigValidation } from './FormValidator.js';
+import { FormValidator } from './FormValidator.js';
 import { initialCards } from './initialcards.js';
+
+const mainConfigValidation = {
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_inactive',
+  inputErrorClass: '.popup__input-error',
+  errorClass: 'popup__input_disabled',
+  inputSection: '.popup__input-section',
+  errorClassActive: 'popup__input-error_active'
+}
 
 const popups = document.querySelectorAll('.popup');
 const ESC_CODE = 'Escape';
