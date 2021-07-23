@@ -1,4 +1,5 @@
 import { Card } from './Card.js';
+import { FormValidator, mainConfigValidation } from './FormValidator.js';
 import { initialCards } from './initialcards.js';
 
 const popups = document.querySelectorAll('.popup');
@@ -36,22 +37,6 @@ closeBtnViewPopup.addEventListener('click', () => (closePopup(viewPopup)));
 const placesContainer = document.querySelector('.places');
 const placeTemplateContent = document.querySelector('.place-template').content;
 
-// функция отображения view-popup
-export function showImagePopup(evt) {
-  evt.preventDefault();
-
-  const image = evt.target.closest('.place__image');
-
-  viewImage.src = image.src;
-  viewImage.alt = image.alt;
-
-  viewPopupAlt.textContent = image.alt;
-
-  viewPopupContainer.append(viewPopupAlt);
-
-  openPopup(viewPopup);
-}
-
 // функция создания карточки из place-template
 function createCard(nameValue, imgValue) { // публичный метод
   const placeElement = placeTemplateContent.cloneNode(true);
@@ -62,7 +47,6 @@ function createCard(nameValue, imgValue) { // публичный метод
   placeImgElement.src = imgValue;
   placeImgElement.alt = nameValue;
 
-  setEventListener(placeElement); // приватный метод
 
   return placeElement;
 }
@@ -139,3 +123,9 @@ initialCards.forEach((item) => {
   // добавляем в DOM
   document.querySelector('.places').append(cardElement);
 })
+
+const formPopupEditValidator = new FormValidator(mainConfigValidation, formPopupEdit);
+const formPopupAddCardValidator = new FormValidator(mainConfigValidation, formPopupAddCard);
+
+formPopupEditValidator.enableValidation();
+formPopupAddCardValidator.enableValidation();

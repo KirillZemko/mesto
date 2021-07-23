@@ -32,8 +32,10 @@ export class Card {
     document.addEventListener('keydown', closeByEsc);
   }
 
-  _showImagePopup() {
-    const image = document.querySelector('.place__image');
+  _showImagePopup(evt) {
+    evt.preventDefault();
+
+    const image = evt.target.closest('.place__image');
 
     viewImage.src = image.src;
     viewImage.alt = image.alt;
@@ -45,7 +47,6 @@ export class Card {
     openPopup(viewPopup);
   }
 
-  // обработчки событий
   _setEventListener() {
     this._element.querySelector('.place__like').addEventListener('click', () => {
       this._togglerLikeBtn();
@@ -53,8 +54,8 @@ export class Card {
     this._element.querySelector('.place__trash-btn').addEventListener('click', () => {
       this._handelDel();
     });
-    this._element.querySelector('.place__image').addEventListener('click', () => {
-      this._showImagePopup();
+    this._element.querySelector('.place__image').addEventListener('click', (evt) => {
+      this._showImagePopup(evt);
     });
   }
 
