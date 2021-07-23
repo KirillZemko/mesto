@@ -47,20 +47,6 @@ closeBtnViewPopup.addEventListener('click', () => (closePopup(viewPopup)));
 const placesContainer = document.querySelector('.places');
 const placeTemplateContent = document.querySelector('.place-template').content;
 
-// функция создания карточки из place-template
-function createCard(nameValue, imgValue) { // публичный метод
-  const placeElement = placeTemplateContent.cloneNode(true);
-  const placeTitleElement = placeElement.querySelector('.place__title');
-  const placeImgElement = placeElement.querySelector('.place__image');
-
-  placeTitleElement.textContent = nameValue;
-  placeImgElement.src = imgValue;
-  placeImgElement.alt = nameValue;
-
-
-  return placeElement;
-}
-
 // функция изменяет значения введенных пользователем в input-ы и изменяет profileName, profileJob
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
@@ -82,6 +68,19 @@ closeBtnEditPopup.addEventListener('click', () => (closePopup(popupEdit)));
 formPopupEdit.addEventListener('submit', handleProfileFormSubmit);
 newItemBtn.addEventListener('click', () => (openPopup(popupAddCard)));
 closeBtnNewItemPopup.addEventListener('click', () => (closePopup(popupAddCard)));
+
+// функция создания карточки из place-template
+function createCard(nameValue, imgValue) {
+  const placeElement = placeTemplateContent.cloneNode(true);
+  const placeTitleElement = placeElement.querySelector('.place__title');
+  const placeImgElement = placeElement.querySelector('.place__image');
+
+  placeTitleElement.textContent = nameValue;
+  placeImgElement.src = imgValue;
+  placeImgElement.alt = nameValue;
+
+  return placeElement;
+}
 
 // добавление новой карточки по клику на кнопку создать
 formPopupAddCard.addEventListener('submit', function(evt) {
@@ -133,6 +132,8 @@ initialCards.forEach((item) => {
   // добавляем в DOM
   document.querySelector('.places').append(cardElement);
 })
+
+
 
 const formPopupEditValidator = new FormValidator(mainConfigValidation, formPopupEdit);
 const formPopupAddCardValidator = new FormValidator(mainConfigValidation, formPopupAddCard);
