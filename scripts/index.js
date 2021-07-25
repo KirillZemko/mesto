@@ -122,18 +122,30 @@ function closeByEsc(evt) {
   }
 }
 
+function showImagePopup(evt) {
+  evt.preventDefault();
+
+  const image = evt.target.closest('.place__image');
+
+  viewImage.src = image.src;
+  viewImage.alt = image.alt;
+  viewPopupAlt.textContent = image.alt;
+
+  viewPopupContainer.append(viewPopupAlt);
+
+  openPopup(viewPopup);
+}
+
 // перебираем объект с карточками
 initialCards.forEach((item) => {
   // создаем экземпляр карточки из класса Card
-  const card = new Card(item, '.place-template');
+  const card = new Card(item, '.place-template', showImagePopup);
   // создаем карточку и возвращаем наружу
   const cardElement = card.generatePlaceCard();
 
   // добавляем в DOM
   document.querySelector('.places').append(cardElement);
 })
-
-
 
 const formPopupEditValidator = new FormValidator(mainConfigValidation, formPopupEdit);
 const formPopupAddCardValidator = new FormValidator(mainConfigValidation, formPopupAddCard);

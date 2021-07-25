@@ -1,10 +1,9 @@
-import { viewPopup, viewPopupContainer, viewImage, viewPopupAlt, openPopup } from './index.js';
-
 export class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handelCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    this._handelCardClick = handelCardClick;
   }
 
   // получаем макет из DOM дерева
@@ -27,27 +26,7 @@ export class Card {
     this._element.remove();
   }
 
-  _openPopup() {
-    this._element.classList.add('popup_opened');
-    document.addEventListener('keydown', closeByEsc);
-  }
-
-  _showImagePopup(evt) {
-    evt.preventDefault();
-
-    const image = evt.target.closest('.place__image');
-
-    viewImage.src = image.src;
-    viewImage.alt = image.alt;
-
-    viewPopupAlt.textContent = image.alt;
-
-    viewPopupContainer.append(viewPopupAlt);
-
-    openPopup(viewPopup);
-  }
-
-  // обработчки событий
+  // обработчик событий
   _setEventListener() {
     this._element.querySelector('.place__like').addEventListener('click', () => {
       this._togglerLikeBtn();
@@ -56,7 +35,7 @@ export class Card {
       this._handelDel();
     });
     this._element.querySelector('.place__image').addEventListener('click', (evt) => {
-      this._showImagePopup(evt);
+      this._handelCardClick(evt);
     });
   }
 
