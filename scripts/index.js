@@ -90,10 +90,11 @@ formPopupAddCard.addEventListener('submit', function(evt) {
 
   formPopupAddCard.reset();
 
-  createCardBtn.classList.add('popup__button_inactive');
-  createCardBtn.setAttribute('disabled', true);
+  formPopupAddCardValidator.buttonInactive();
+
   closePopup(popupAddCard);
 });
+
 
 // слушатель закрытия любого popup по клику на overlay и кнопку esc
 popups.forEach((popup) => {

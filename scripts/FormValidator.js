@@ -63,6 +63,11 @@ export class FormValidator {
     }
   }
 
+  buttonInactive() {
+    this._buttonElement.setAttribute('disabled', true);
+    this._buttonElement.classList.add(this._inactiveButtonClass);
+  }
+
   _setEventListeners() {
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
