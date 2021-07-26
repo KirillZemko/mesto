@@ -95,7 +95,7 @@ formPopupAddCard.addEventListener('submit', function() {
 
   // formPopupAddCard.reset();
 
-  // formPopupAddCardValidator.buttonInactive();
+  formPopupAddCardValidator.buttonInactive();
 
   closePopup(popupAddCard);
 });
