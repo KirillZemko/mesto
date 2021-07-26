@@ -83,14 +83,28 @@ function createCard(nameValue, imgValue) {
 }
 
 // добавление новой карточки по клику на кнопку создать
-formPopupAddCard.addEventListener('submit', function(evt) {
-  evt.preventDefault();
+formPopupAddCard.addEventListener('submit', function() {
+  // создание карточки по клику на кнопку создать. Карточка создается из классе Card, в конструктор попадают данные
+  // из input-ов попапа formPopupAddCard, вешаюются все слушатели
+  const data = {
+    name: titleInput.value,
+    link: linkInput.value
+  }
+  const card = new Card(data, '.place-template', showImagePopup);
+  const cardElement = card.generatePlaceCard();
 
-  placesContainer.prepend(createCard(titleInput.value, linkInput.value));
+  placesContainer.prepend(cardElement);
 
-  formPopupAddCard.reset();
+  // старый код создания карточки (карточка создается без навешенных слушателей)
+  // placesContainer.querySelector('.places').append(cardElement);
 
-  formPopupAddCardValidator.buttonInactive();
+  // evt.preventDefault();
+
+  // placesContainer.prepend(createCard(titleInput.value, linkInput.value));
+
+  // formPopupAddCard.reset();
+
+  // formPopupAddCardValidator.buttonInactive();
 
   closePopup(popupAddCard);
 });
