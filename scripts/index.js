@@ -77,25 +77,19 @@ function createCard(nameValue, imgValue) {
 formPopupAddCard.addEventListener('submit', function() {
   // создание карточки по клику на кнопку создать. Карточка создается из класса Card, в конструктор попадают данные
   // из input-ов попапа formPopupAddCard, вешаюются все слушатели
-  const data = {
+  const inputValues = {
     name: titleInput.value,
     link: linkInput.value
   }
-  const card = new Card(data, '.place-template', showImagePopup);
+  const card = new Card(inputValues, '.place-template', showImagePopup);
+  console.log(card);
   const cardElement = card.generatePlaceCard();
 
   placesContainer.prepend(cardElement);
 
-  // старый код создания карточки (карточка создается без навешенных слушателей)
-  // placesContainer.querySelector('.places').append(cardElement);
+  formPopupAddCard.reset();
 
-  // evt.preventDefault();
-
-  // placesContainer.prepend(createCard(titleInput.value, linkInput.value));
-
-  // formPopupAddCard.reset();
-
-  formPopupAddCardValidator.buttonInactive();
+  formPopupAddCardValidator.inactiveButton();
 
   closePopup(popupAddCard);
 });
@@ -150,7 +144,7 @@ initialCards.forEach((item) => {
   const cardElement = card.generatePlaceCard();
 
   // добавляем в DOM
-  document.querySelector('.places').append(cardElement);
+  placesContainer.append(cardElement);
 })
 
 const formPopupEditValidator = new FormValidator(mainConfigValidation, formPopupEdit);
