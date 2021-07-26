@@ -86,13 +86,6 @@ formPopupAddCard.addEventListener('submit', function() {
 
   placesContainer.prepend(cardElement);
 
-  // старый код создания карточки (карточка создается без навешенных слушателей)
-  // placesContainer.querySelector('.places').append(cardElement);
-
-  // evt.preventDefault();
-
-  // placesContainer.prepend(createCard(titleInput.value, linkInput.value));
-
   formPopupAddCard.reset();
 
   formPopupAddCardValidator.inactiveButton();
