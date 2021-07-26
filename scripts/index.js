@@ -1,16 +1,7 @@
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 import { initialCards } from './initialcards.js';
-
-const mainConfigValidation = {
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_inactive',
-  inputErrorClass: '.popup__input-error',
-  errorClass: 'popup__input_disabled',
-  inputSection: '.popup__input-section',
-  errorClassActive: 'popup__input-error_active'
-}
+import { mainConfigValidation } from './constants.js';
 
 const popups = document.querySelectorAll('.popup');
 const ESC_CODE = 'Escape';
@@ -84,7 +75,7 @@ function createCard(nameValue, imgValue) {
 
 // добавление новой карточки по клику на кнопку создать
 formPopupAddCard.addEventListener('submit', function() {
-  // создание карточки по клику на кнопку создать. Карточка создается из классе Card, в конструктор попадают данные
+  // создание карточки по клику на кнопку создать. Карточка создается из класса Card, в конструктор попадают данные
   // из input-ов попапа formPopupAddCard, вешаюются все слушатели
   const data = {
     name: titleInput.value,
