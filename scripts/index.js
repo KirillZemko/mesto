@@ -60,19 +60,6 @@ formPopupEdit.addEventListener('submit', handleProfileFormSubmit);
 newItemBtn.addEventListener('click', () => (openPopup(popupAddCard)));
 closeBtnNewItemPopup.addEventListener('click', () => (closePopup(popupAddCard)));
 
-// функция создания карточки из place-template
-function createCard(nameValue, imgValue) {
-  const placeElement = placeTemplateContent.cloneNode(true);
-  const placeTitleElement = placeElement.querySelector('.place__title');
-  const placeImgElement = placeElement.querySelector('.place__image');
-
-  placeTitleElement.textContent = nameValue;
-  placeImgElement.src = imgValue;
-  placeImgElement.alt = nameValue;
-
-  return placeElement;
-}
-
 // добавление новой карточки по клику на кнопку создать
 formPopupAddCard.addEventListener('submit', function() {
   // создание карточки по клику на кнопку создать. Карточка создается из класса Card, в конструктор попадают данные
