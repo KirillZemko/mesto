@@ -80,7 +80,6 @@ formPopupAddCard.addEventListener('submit', function() {
   closePopup(popupAddCard);
 });
 
-
 // слушатель закрытия любого popup по клику на overlay и кнопку esc
 popups.forEach((popup) => {
   popup.addEventListener('click', (evt) => {
@@ -108,6 +107,7 @@ function closeByEsc(evt) {
   }
 }
 
+// функция показа изображения карточки
 function showImagePopup(evt) {
   evt.preventDefault();
 
@@ -122,7 +122,7 @@ function showImagePopup(evt) {
   openPopup(viewPopup);
 }
 
-// перебираем объект с карточками
+// перебираем объект с карточками в constants.js и публикуем в DOM
 initialCards.forEach((item) => {
   // создаем экземпляр карточки из класса Card
   const card = new Card(item, '.place-template', showImagePopup);
@@ -133,8 +133,10 @@ initialCards.forEach((item) => {
   placesContainer.append(cardElement);
 })
 
+// создаем переменные popup-ов при помощи класса FormValidator
 const formPopupEditValidator = new FormValidator(mainConfigValidation, formPopupEdit);
 const formPopupAddCardValidator = new FormValidator(mainConfigValidation, formPopupAddCard);
 
+// включаем валидацию форм попапов при помощи публичного метода enableValidation класса FormValidator
 formPopupEditValidator.enableValidation();
 formPopupAddCardValidator.enableValidation();
