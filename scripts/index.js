@@ -60,19 +60,6 @@ formPopupEdit.addEventListener('submit', handleProfileFormSubmit);
 newItemBtn.addEventListener('click', () => (openPopup(popupAddCard)));
 closeBtnNewItemPopup.addEventListener('click', () => (closePopup(popupAddCard)));
 
-// функция создания карточки из place-template
-function createCard(nameValue, imgValue) {
-  const placeElement = placeTemplateContent.cloneNode(true);
-  const placeTitleElement = placeElement.querySelector('.place__title');
-  const placeImgElement = placeElement.querySelector('.place__image');
-
-  placeTitleElement.textContent = nameValue;
-  placeImgElement.src = imgValue;
-  placeImgElement.alt = nameValue;
-
-  return placeElement;
-}
-
 // добавление новой карточки по клику на кнопку создать
 formPopupAddCard.addEventListener('submit', function() {
   // создание карточки по клику на кнопку создать. Карточка создается из класса Card, в конструктор попадают данные
@@ -92,7 +79,6 @@ formPopupAddCard.addEventListener('submit', function() {
 
   closePopup(popupAddCard);
 });
-
 
 // слушатель закрытия любого popup по клику на overlay и кнопку esc
 popups.forEach((popup) => {
@@ -121,6 +107,7 @@ function closeByEsc(evt) {
   }
 }
 
+// функция показа изображения карточки
 function showImagePopup(evt) {
   evt.preventDefault();
 
@@ -135,7 +122,7 @@ function showImagePopup(evt) {
   openPopup(viewPopup);
 }
 
-// перебираем объект с карточками
+// перебираем объект с карточками в constants.js и публикуем в DOM
 initialCards.forEach((item) => {
   // создаем экземпляр карточки из класса Card
   const card = new Card(item, '.place-template', showImagePopup);
@@ -146,8 +133,10 @@ initialCards.forEach((item) => {
   placesContainer.append(cardElement);
 })
 
+// создаем переменные popup-ов при помощи класса FormValidator
 const formPopupEditValidator = new FormValidator(mainConfigValidation, formPopupEdit);
 const formPopupAddCardValidator = new FormValidator(mainConfigValidation, formPopupAddCard);
 
+// включаем валидацию форм попапов при помощи публичного метода enableValidation класса FormValidator
 formPopupEditValidator.enableValidation();
 formPopupAddCardValidator.enableValidation();
