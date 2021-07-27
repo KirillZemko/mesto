@@ -27,10 +27,10 @@ const linkInput = document.querySelector('.popup__input_type_url');
 const createCardBtn = document.querySelector('.popup__button_type-add-card');
 
 // переменные viewPopup
-export const viewPopup = document.querySelector('.popup_type_view');
-export const viewPopupContainer = document.querySelector('.popup__container_type_image');
-export const viewImage = document.querySelector('.popup__image');
-export const viewPopupAlt = document.querySelector('.popup__description');
+const viewPopup = document.querySelector('.popup_type_view');
+const viewPopupContainer = document.querySelector('.popup__container_type_image');
+const viewImage = document.querySelector('.popup__image');
+const viewPopupAlt = document.querySelector('.popup__description');
 const closeBtnViewPopup = document.querySelector('.popup__close-button_type_view');
 closeBtnViewPopup.addEventListener('click', () => (closePopup(viewPopup)));
 
@@ -59,6 +59,19 @@ closeBtnEditPopup.addEventListener('click', () => (closePopup(popupEdit)));
 formPopupEdit.addEventListener('submit', handleProfileFormSubmit);
 newItemBtn.addEventListener('click', () => (openPopup(popupAddCard)));
 closeBtnNewItemPopup.addEventListener('click', () => (closePopup(popupAddCard)));
+
+// функция создания карточки из place-template
+// function createCard(nameValue, imgValue) {
+//   const placeElement = placeTemplateContent.cloneNode(true);
+//   const placeTitleElement = placeElement.querySelector('.place__title');
+//   const placeImgElement = placeElement.querySelector('.place__image');
+
+//   placeTitleElement.textContent = nameValue;
+//   placeImgElement.src = imgValue;
+//   placeImgElement.alt = nameValue;
+
+//   return placeElement;
+// }
 
 // добавление новой карточки по клику на кнопку создать
 formPopupAddCard.addEventListener('submit', function() {
@@ -89,7 +102,7 @@ popups.forEach((popup) => {
   })
 })
 
-export function openPopup(popup) {
+function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc);
 }
@@ -107,7 +120,7 @@ function closeByEsc(evt) {
   }
 }
 
-// функция показа изображения карточки
+// функция открытия попапа карточки
 function showImagePopup(evt) {
   evt.preventDefault();
 
