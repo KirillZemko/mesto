@@ -27,10 +27,10 @@ const linkInput = document.querySelector('.popup__input_type_url');
 const createCardBtn = document.querySelector('.popup__button_type-add-card');
 
 // переменные viewPopup
-export const viewPopup = document.querySelector('.popup_type_view');
-export const viewPopupContainer = document.querySelector('.popup__container_type_image');
-export const viewImage = document.querySelector('.popup__image');
-export const viewPopupAlt = document.querySelector('.popup__description');
+const viewPopup = document.querySelector('.popup_type_view');
+const viewPopupContainer = document.querySelector('.popup__container_type_image');
+const viewImage = document.querySelector('.popup__image');
+const viewPopupAlt = document.querySelector('.popup__description');
 const closeBtnViewPopup = document.querySelector('.popup__close-button_type_view');
 closeBtnViewPopup.addEventListener('click', () => (closePopup(viewPopup)));
 
@@ -89,7 +89,7 @@ popups.forEach((popup) => {
   })
 })
 
-export function openPopup(popup) {
+function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc);
 }
@@ -107,7 +107,7 @@ function closeByEsc(evt) {
   }
 }
 
-// функция показа изображения карточки
+// функция открытия попапа карточки
 function showImagePopup(evt) {
   evt.preventDefault();
 
