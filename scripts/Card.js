@@ -1,5 +1,5 @@
 export class Card {
-  constructor(data, cardSelector, handelCardClick) {
+  constructor(data, cardSelector, { handelCardClick }) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
@@ -34,8 +34,8 @@ export class Card {
     this._element.querySelector('.place__trash-btn').addEventListener('click', () => {
       this._handelDel();
     });
-    this._element.querySelector('.place__image').addEventListener('click', (evt) => {
-      this._handelCardClick(evt);
+    this._element.querySelector('.place__image').addEventListener('click', () => {
+      this._handelCardClick(this._name, this._link);
     });
   }
 

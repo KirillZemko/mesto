@@ -1,137 +1,117 @@
+import Section from './Section.js';
+import Popup from './Popup.js';
+import PopupWithImage from './PopupWithImage.js';
+import PopupWithForm from './PopupWithForm.js';
+import UserInfo from './UserInfo.js';
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 import { initialCards } from './initialcards.js';
-import { mainConfigValidation } from './constants.js';
+import {
+  mainConfigValidation,
+  popups,
+  ESC_CODE,
+  profileName,
+  profileJob,
+  popupEdit,
+  editBtn,
+  closeBtnEditPopup,
+  formPopupEdit,
+  nameInput,
+  jobInput,
+  popupAddCard,
+  closeBtnNewItemPopup,
+  formPopupAddCard,
+  newItemBtn,
+  titleInput,
+  linkInput,
+  createCardBtn,
+  viewPopup,
+  viewPopupContainer,
+  viewImage,
+  viewPopupAlt,
+  closeBtnViewPopup,
+  placesContainer,
+  placeTemplateContent,
+  profileData
+} from './constants.js';
 
-const popups = document.querySelectorAll('.popup');
-const ESC_CODE = 'Escape';
-// переменные профиля
-const profileName = document.querySelector('.profile__name');
-const profileJob = document.querySelector('.profile__job');
+// создаем экземпляры карточек класса Section
+const cardList = new Section({
+  items: initialCards,
+  renderer: (item) => {
+      const card = new Card(item, '.place-template',
+        {
+          handelCardClick: (name, link) => {
+            popupWithImg.open(name, link);
+          }
+        }
+      );
+      const cardElement = card.generatePlaceCard();
 
-// переменные popupEdit
-const popupEdit = document.querySelector('.popup_edit');
-const editBtn = document.querySelector('.edit-button');
-const closeBtnEditPopup = popupEdit.querySelector('.popup__close-button');
-const formPopupEdit = popupEdit.querySelector('.popup__form');
-const nameInput = document.querySelector('.popup__input_type_name');
-const jobInput = document.querySelector('.popup__input_type_job');
+      cardList.addItem(cardElement);
+    }
+  },
+  placesContainer
+);
 
-// переменные popupAddCard
-const popupAddCard = document.querySelector('.popup_add-card');
-const closeBtnNewItemPopup = document.querySelector('.popup__close-button_type_add-card');
-const formPopupAddCard = document.querySelector('.popup__form_type_add-card');
-const newItemBtn = document.querySelector('.add-button');
-const titleInput = document.querySelector('.popup__input_type_title');
-const linkInput = document.querySelector('.popup__input_type_url');
-const createCardBtn = document.querySelector('.popup__button_type-add-card');
+function createCard(item, template) {
+  const card = new Card(item, '.place-template', {
+    handelCardClick: (name, link) => {
+      popupWithImg.open(name, link);
+    }
+  }, template);
 
-// переменные viewPopup
-const viewPopup = document.querySelector('.popup_type_view');
-const viewPopupContainer = document.querySelector('.popup__container_type_image');
-const viewImage = document.querySelector('.popup__image');
-const viewPopupAlt = document.querySelector('.popup__description');
-const closeBtnViewPopup = document.querySelector('.popup__close-button_type_view');
-closeBtnViewPopup.addEventListener('click', () => (closePopup(viewPopup)));
-
-// переменные place-template
-const placesContainer = document.querySelector('.places');
-const placeTemplateContent = document.querySelector('.place-template').content;
-
-// функция изменяет значения введенных пользователем в input-ы и изменяет profileName, profileJob
-function handleProfileFormSubmit(evt) {
-    evt.preventDefault();
-
-    profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;
-
-    closePopup(popupEdit);
+  return card;
 }
 
-editBtn.addEventListener('click', function() {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
+const newCard = new PopupWithForm(
+  popupAddCard,
+  () => {
+    const item = {
+          name: titleInput.value,
+          link: linkInput.value
+    }
+    const newCards = createCard(item, '.place-template');
+    const newAddedCard = newCards.generatePlaceCard();
 
-  openPopup(popupEdit);
-})
-
-closeBtnEditPopup.addEventListener('click', () => (closePopup(popupEdit)));
-formPopupEdit.addEventListener('submit', handleProfileFormSubmit);
-newItemBtn.addEventListener('click', () => (openPopup(popupAddCard)));
-closeBtnNewItemPopup.addEventListener('click', () => (closePopup(popupAddCard)));
-
-// добавление новой карточки по клику на кнопку создать
-formPopupAddCard.addEventListener('submit', function() {
-  // создание карточки по клику на кнопку создать. Карточка создается из класса Card, в конструктор попадают данные
-  // из input-ов попапа formPopupAddCard, вешаюются все слушатели
-  const inputValues = {
-    name: titleInput.value,
-    link: linkInput.value
-  }
-  const card = new Card(inputValues, '.place-template', showImagePopup);
-  const cardElement = card.generatePlaceCard();
-
-  placesContainer.prepend(cardElement);
-
-  formPopupAddCard.reset();
-
-  formPopupAddCardValidator.inactiveButton();
-
-  closePopup(popupAddCard);
+    cardList.addItem(newAddedCard);
 });
 
-// слушатель закрытия любого popup по клику на overlay и кнопку esc
-popups.forEach((popup) => {
-  popup.addEventListener('click', (evt) => {
-    if (evt.target === evt.currentTarget) {
-      closePopup(popup);
+const popupAddClass = new Popup(popupAddCard);
+const popupWithImg = new PopupWithImage(viewPopup, viewPopupAlt, viewImage);
+const userInfo = new UserInfo(profileData);
+
+const popupProfile = new PopupWithForm(
+  popupEdit,
+  () => {
+    const item = {
+      name: nameInput.value,
+      job: jobInput.value
     }
-  })
-})
-
-function openPopup(popup) {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closeByEsc);
-}
-
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeByEsc);
-}
-
-function closeByEsc(evt) {
-  if (evt.key === ESC_CODE) {
-    const openedPopup = document.querySelector('.popup_opened');
-
-    closePopup(openedPopup);
+    userInfo.setUserInfo(item);
+    console.log(item);
   }
-}
+);
 
-// функция открытия попапа карточки
-function showImagePopup(evt) {
-  evt.preventDefault();
+popupProfile.setEventListeners();
 
-  const image = evt.target.closest('.place__image');
+// функция открывает открывает попап редактирования профиля
+editBtn.addEventListener('click', () => {
+  popupProfile.open();
 
-  viewImage.src = image.src;
-  viewImage.alt = image.alt;
-  viewPopupAlt.textContent = image.alt;
+  const profileInfo = userInfo.getUserInfo();
 
-  viewPopupContainer.append(viewPopupAlt);
+  nameInput.value = profileInfo.title;
+  jobInput.value = profileInfo.subtitle;
+});
 
-  openPopup(viewPopup);
-}
 
-// перебираем объект с карточками в constants.js и публикуем в DOM
-initialCards.forEach((item) => {
-  // создаем экземпляр карточки из класса Card
-  const card = new Card(item, '.place-template', showImagePopup);
-  // создаем карточку и возвращаем наружу
-  const cardElement = card.generatePlaceCard();
+newItemBtn.addEventListener('click', () => {
+  popupAddClass.open();
+});
 
-  // добавляем в DOM
-  placesContainer.append(cardElement);
-})
+// публикуем созданные карточки в DOM
+cardList.renderItems();
 
 // создаем переменные popup-ов при помощи класса FormValidator
 const formPopupEditValidator = new FormValidator(mainConfigValidation, formPopupEdit);
@@ -140,3 +120,7 @@ const formPopupAddCardValidator = new FormValidator(mainConfigValidation, formPo
 // включаем валидацию форм попапов при помощи публичного метода enableValidation класса FormValidator
 formPopupEditValidator.enableValidation();
 formPopupAddCardValidator.enableValidation();
+
+newCard.setEventListeners();
+popupAddClass.setEventListeners();
+popupWithImg.setEventListeners();
