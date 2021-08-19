@@ -5,7 +5,8 @@ import PopupWithForm from './PopupWithForm.js';
 import UserInfo from './UserInfo.js';
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
-import { initialCards } from './initialcards.js';
+import { initialCards } from './constants';
+import '../pages/index.css';
 import {
   mainConfigValidation,
   popups,
