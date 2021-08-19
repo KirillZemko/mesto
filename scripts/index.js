@@ -73,7 +73,6 @@ const newCard = new PopupWithForm(
     }
     const newCards = createCard(item, '.place-template');
     const newAddedCard = newCards.generatePlaceCard();
-
     cardList.addItem(newAddedCard);
 });
 
