@@ -56,7 +56,6 @@ const popupProfile = new PopupWithForm(
   '.popup_edit',
   (item) => {
     userInfo.setUserInfo(item);
-    console.log(item);
   }
 );
 
