@@ -74,6 +74,7 @@ editBtn.addEventListener('click', () => {
 
 
 newItemBtn.addEventListener('click', () => {
+  formPopupAddCardValidator.enableValidation();
   newCard.open();
 });
 
