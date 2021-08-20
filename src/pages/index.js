@@ -8,30 +8,14 @@ import { FormValidator } from '../components/FormValidator.js';
 import { initialCards } from '../components/constants.js';
 import {
   mainConfigValidation,
-  popups,
-  ESC_CODE,
-  profileName,
-  profileJob,
-  popupEdit,
   editBtn,
-  closeBtnEditPopup,
   formPopupEdit,
   nameInput,
   jobInput,
-  popupAddCard,
-  closeBtnNewItemPopup,
   formPopupAddCard,
   newItemBtn,
-  titleInput,
-  linkInput,
-  createCardBtn,
-  viewPopup,
-  viewPopupContainer,
   viewImage,
   viewPopupAlt,
-  closeBtnViewPopup,
-  placesContainer,
-  placeTemplateContent,
   profileData
 } from '../components/constants.js';
 
@@ -58,24 +42,19 @@ function createCard(item, template) {
 }
 
 const newCard = new PopupWithForm(
-  popupAddCard,
+  '.popup_add-card',
   (item) => {
     const newCards = createCard(item, '.place-template');
     const newAddedCard = newCards.generatePlaceCard();
     cardList.addItem(newAddedCard);
 });
 
-// const popupAddClass = new Popup(popupAddCard);
-const popupWithImg = new PopupWithImage(viewPopup, viewPopupAlt, viewImage);
+const popupWithImg = new PopupWithImage('.popup_type_view', viewPopupAlt, viewImage);
 const userInfo = new UserInfo(profileData);
 
 const popupProfile = new PopupWithForm(
-  popupEdit,
+  '.popup_edit',
   (item) => {
-    // const item = {
-    //   name: nameInput.value,
-    //   job: jobInput.value
-    // }
     userInfo.setUserInfo(item);
     console.log(item);
   }
