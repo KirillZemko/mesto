@@ -1,12 +1,11 @@
-import Section from './Section.js';
-import Popup from './Popup.js';
-import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from './PopupWithForm.js';
-import UserInfo from './UserInfo.js';
-import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js';
-import { initialCards } from './constants';
 import '../pages/index.css';
+import Section from '../components/Section.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
+import { Card } from '../components/Card.js'
+import { FormValidator } from '../components/FormValidator.js';
+import { initialCards } from '../components/constants.js';
 import {
   mainConfigValidation,
   popups,
@@ -34,25 +33,18 @@ import {
   placesContainer,
   placeTemplateContent,
   profileData
-} from './constants.js';
+} from '../components/constants.js';
 
 // создаем экземпляры карточек класса Section
 const cardList = new Section({
   items: initialCards,
   renderer: (item) => {
-      const card = new Card(item, '.place-template',
-        {
-          handelCardClick: (name, link) => {
-            popupWithImg.open(name, link);
-          }
-        }
-      );
-      const cardElement = card.generatePlaceCard();
-
-      cardList.addItem(cardElement);
+    const card = createCard(item, '.place-template');
+    const cardElement = card.generatePlaceCard();
+    cardList.addItem(cardElement);
     }
   },
-  placesContainer
+  '.places'
 );
 
 function createCard(item, template) {
@@ -67,27 +59,23 @@ function createCard(item, template) {
 
 const newCard = new PopupWithForm(
   popupAddCard,
-  () => {
-    const item = {
-          name: titleInput.value,
-          link: linkInput.value
-    }
+  (item) => {
     const newCards = createCard(item, '.place-template');
     const newAddedCard = newCards.generatePlaceCard();
     cardList.addItem(newAddedCard);
 });
 
-const popupAddClass = new Popup(popupAddCard);
+// const popupAddClass = new Popup(popupAddCard);
 const popupWithImg = new PopupWithImage(viewPopup, viewPopupAlt, viewImage);
 const userInfo = new UserInfo(profileData);
 
 const popupProfile = new PopupWithForm(
   popupEdit,
-  () => {
-    const item = {
-      name: nameInput.value,
-      job: jobInput.value
-    }
+  (item) => {
+    // const item = {
+    //   name: nameInput.value,
+    //   job: jobInput.value
+    // }
     userInfo.setUserInfo(item);
     console.log(item);
   }
@@ -107,7 +95,7 @@ editBtn.addEventListener('click', () => {
 
 
 newItemBtn.addEventListener('click', () => {
-  popupAddClass.open();
+  newCard.open();
 });
 
 // публикуем созданные карточки в DOM
@@ -122,5 +110,4 @@ formPopupEditValidator.enableValidation();
 formPopupAddCardValidator.enableValidation();
 
 newCard.setEventListeners();
-popupAddClass.setEventListeners();
 popupWithImg.setEventListeners();

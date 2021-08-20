@@ -22,7 +22,6 @@ export class Card {
   }
 
   _handelDel() {
-    this._element.querySelector('.place');
     this._element.remove();
   }
 

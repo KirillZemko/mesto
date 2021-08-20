@@ -17,13 +17,9 @@ export class FormValidator {
       .closest(this._inputSection)
       .querySelector(this._inputErrorClass);
 
-    const errorInput = inputElement
-      .closest(this._inputSection)
-      .querySelector(this._inputSelector);
-
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._errorClassActive);
-    errorInput.classList.add(this._errorClass);
+    inputElement.classList.add(this._errorClass);
   }
 
   _hideInputError(inputElement) {
@@ -31,13 +27,9 @@ export class FormValidator {
       .closest(this._inputSection)
       .querySelector(this._inputErrorClass);
 
-    const errorInput = inputElement
-     .closest(this._inputSection)
-     .querySelector(this._inputSelector);
-
     errorElement.textContent = '';
     errorElement.classList.remove(this._errorClassActive);
-    errorInput.classList.remove(this._errorClass);
+    inputElement.classList.remove(this._errorClass);
   }
 
   _checkInputValidity(inputElement) {
@@ -55,7 +47,7 @@ export class FormValidator {
     const hasNotValidInput = this._inputList.some(inputElement => !inputElement.validity.valid);
 
     if (hasNotValidInput) {
-      this._buttonElement.setAttribute('disabled', true);
+      this.inactiveButton();
       this._buttonElement.classList.add(this._inactiveButtonClass);
     } else {
       this._buttonElement.removeAttribute('disabled');
