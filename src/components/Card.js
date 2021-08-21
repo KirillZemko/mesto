@@ -33,7 +33,9 @@ export class Card {
     this._element.querySelector('.place__trash-btn').addEventListener('click', () => {
       this._handelDel();
     });
-    this._element.querySelector('.place__image').addEventListener('click', () => {
+    this._element.querySelector('.place__image').addEventListener('click', (evt) => {
+      evt.preventDefault();
+
       this._handelCardClick(this._name, this._link);
     });
   }

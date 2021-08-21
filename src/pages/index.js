@@ -59,18 +59,16 @@ const popupProfile = new PopupWithForm(
    }
 );
 
-popupProfile.setEventListeners();
-
 // функция открывает открывает попап редактирования профиля
 editBtn.addEventListener('click', () => {
   popupProfile.open();
+  formPopupEditValidator.resetValidation();
 
   const profileInfo = userInfo.getUserInfo();
 
   nameInput.value = profileInfo.title;
   jobInput.value = profileInfo.subtitle;
 });
-
 
 newItemBtn.addEventListener('click', () => {
   formPopupAddCardValidator.resetValidation();
@@ -90,3 +88,4 @@ formPopupAddCardValidator.enableValidation();
 
 newCard.setEventListeners();
 popupWithImg.setEventListeners();
+popupProfile.setEventListeners();
