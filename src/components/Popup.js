@@ -1,8 +1,6 @@
-import { ESC_CODE } from "./constants.js";
+import { ESC_CODE } from "../utils/constants.js";
 
 export default class Popup {
-  // constructor(popupSelector) {
-  //   this._popupSelector = popupSelector;
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
     this._handleEscClose = this._handleEscClose.bind(this);
@@ -17,7 +15,7 @@ export default class Popup {
   // закрытие попапа
   close() {
     this._popup.classList.remove('popup_opened');
-    this._popup.removeEventListener('keydown', this._handleEscClose);
+    document.removeEventListener('keydown', this._handleEscClose);
   }
 
   // метод добавления слущателей событий

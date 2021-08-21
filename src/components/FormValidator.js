@@ -48,7 +48,6 @@ export class FormValidator {
 
     if (hasNotValidInput) {
       this.inactiveButton();
-      this._buttonElement.classList.add(this._inactiveButtonClass);
     } else {
       this._buttonElement.removeAttribute('disabled');
       this._buttonElement.classList.remove(this._inactiveButtonClass);

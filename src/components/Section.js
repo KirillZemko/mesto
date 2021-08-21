@@ -3,7 +3,7 @@ export default class Section {
     this._items = items;
     this._renderer = renderer;
 
-    this._containerSelector = document.querySelector(containerSelector);
+    this._container = document.querySelector(containerSelector);
   }
 
   // метод рендерит элемент (для каждого элемента массива items запускаем callback-функцию renderer)
@@ -13,6 +13,6 @@ export default class Section {
 
   // метод добавление элемента в DOM (принимает DOM элемент и вставляем этот элемент в containerSelector)
   addItem(element) {
-    this._containerSelector.prepend(element);
+    this._container.prepend(element);
   }
 }

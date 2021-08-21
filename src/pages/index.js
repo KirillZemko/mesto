@@ -5,7 +5,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import { Card } from '../components/Card.js'
 import { FormValidator } from '../components/FormValidator.js';
-import { initialCards } from '../components/constants.js';
+import { initialCards } from '../utils/constants.js';
 import {
   mainConfigValidation,
   editBtn,
@@ -17,7 +17,7 @@ import {
   viewImage,
   viewPopupAlt,
   profileData
-} from '../components/constants.js';
+} from '../utils/constants.js';
 
 // создаем экземпляры карточек класса Section
 const cardList = new Section({
@@ -56,7 +56,7 @@ const popupProfile = new PopupWithForm(
   '.popup_edit',
   (item) => {
     userInfo.setUserInfo(item);
-  }
+   }
 );
 
 popupProfile.setEventListeners();
@@ -73,7 +73,7 @@ editBtn.addEventListener('click', () => {
 
 
 newItemBtn.addEventListener('click', () => {
-  formPopupAddCardValidator.enableValidation();
+  formPopupAddCardValidator.resetValidation();
   newCard.open();
 });
 
