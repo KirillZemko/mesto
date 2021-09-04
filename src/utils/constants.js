@@ -11,13 +11,19 @@ export const mainConfigValidation = {
 export const popups = document.querySelectorAll('.popup');
 export const ESC_CODE = 'Escape';
 
+// переменные popupEditAvatar
+export const popupEditAvavat = document.querySelector('.popup_edit-avatar');
+export const buttonEditAvatar = document.querySelector('.profile__avatar-edit-button');
+
 // переменные профиля
 export const profileData = {
   title: document.querySelector('.profile__name'),
   subtitle: document.querySelector('.profile__job'),
+  avatar: document.querySelector('.profile__avatar'),
 }
 export const profileName = document.querySelector('.profile__name');
 export const profileJob = document.querySelector('.profile__job');
+export const profileAvatar = document.querySelector('.profile__avatar');
 
 // переменные popupEdit
 export const popupEdit = document.querySelector('.popup_edit');

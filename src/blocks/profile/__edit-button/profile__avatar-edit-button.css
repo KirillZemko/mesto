@@ -1,0 +1,17 @@
+.profile__avatar-edit-button {
+  display: none;
+  padding: 0;
+  background: url(../../../images/pencil.png);
+  border: none;
+  width: 26px;
+  height: 26px;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 51px;
+  left: 51px;
+}
+
+.profile__avatar-edit-button:hover {
+  cursor: pointer;
+}

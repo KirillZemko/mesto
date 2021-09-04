@@ -15,7 +15,10 @@
   <main class="content">
     <section class="profile">
       <div class="profile__info">
-        <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар">
+        <div class="avatar-conatainer">
+          <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар">
+          <button class="profile__avatar-edit-button"></button>
+        </div>
           <div class="profile__text-wrapper">
             <div class="profile__name-wrapper">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -76,6 +79,22 @@
         <img src="#" alt="#" class="popup__image">
       </div>
     </div>
+    <!-- popup-edit-avatar -->
+    <div class="popup popup_edit-avatar">
+      <div class="popup__container">
+        <button class="popup__close-button popup__close-button_type_edit-avatar" aria-label="закрыть"></button>
+        <h2 class="popup__title">Редактировать автар</h2>
+        <form class="popup__form popup__form_type_edit-avatar" name="popup-form-edit-avatar" autocomplete="off" novalidate>
+          <fieldset class="popup__profile-info popup__profile-edit-avatar">
+            <section class="popup__input-section">
+              <input class="popup__input popup__input_type_avatar-link" id="input-avatar-link" placeholder="Ссылка на автар" type="url" name="link" required>
+              <span class="popup__input-error" id="input-url-error"></span>
+            </section>
+            <button class="popup__button popup__button-save" type="submit">Сохранить</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
   </main>
   <footer class="footer">
     <p class="footer__title">&copy; 2021 Mesto Russia</p>
@@ -88,7 +107,10 @@
       </a>
       <div class="place__desription">
         <h2 class="place__title"></h2>
-        <button class="place__like" aria-label="лайк" type="button"></button>
+        <div class="place__like-container">
+          <button class="place__like" aria-label="лайк" type="button"></button>
+          <p class="place__like-counter"></p>
+        </div>
       </div>
       <button class="place__trash-btn" type="button"></button>
     </article>
