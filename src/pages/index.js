@@ -22,7 +22,6 @@ import {
   profileData,
   popupEditAvavat,
   buttonEditAvatar,
-  popupConfirm
 } from '../utils/constants.js';
 
 const api = new Api({
@@ -44,7 +43,6 @@ function deleteConfirm(evt, newCard) {
 
   api.removeCard(newCard.getItemId())
     .then(() => {
-      // newCard.removeCard();
       popupDelete.close();
     })
     .catch((err) => {

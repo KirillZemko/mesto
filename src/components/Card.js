@@ -9,6 +9,7 @@ export class Card {
     this._likeCard = likeCard;
     this._deleteCard = deleteCard;
     this._counterLikes = data.likes;
+    this._ownerId = data.owner._id;
   }
 
   // получаем макет из DOM дерева
@@ -63,9 +64,9 @@ export class Card {
     this._likes = this._element.querySelector('.place__like-counter');
     this.placesDeleteButton = this._element.querySelector('.place__trash-btn');
 
-    // if (this._ownerId !== this._userId){
-    //   this.placesDeleteButton.style.display = 'none';
-    // }
+    if (this._ownerId !== this._userId){
+      this.placesDeleteButton.style.display = 'none';
+    }
 
     this._setEventListener();
     this.renderLikes();

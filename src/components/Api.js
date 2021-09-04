@@ -37,13 +37,13 @@ export default class Api {
      .then(this._checkResponse);
   }
 
-  postUserInfo({ name, job }) {
+  postUserInfo({ name, about }) {
     return fetch(`${this._address}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         name: name,
-        about: job,
+        about: about,
       })
     })
      .then(this._checkResponse)
