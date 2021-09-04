@@ -25,6 +25,9 @@ export const profileName = document.querySelector('.profile__name');
 export const profileJob = document.querySelector('.profile__job');
 export const profileAvatar = document.querySelector('.profile__avatar');
 
+//переменный popupConformation
+export const popupConfirm = document.querySelector('.popup_conformation');
+
 // переменные popupEdit
 export const popupEdit = document.querySelector('.popup_edit');
 export const editBtn = document.querySelector('.edit-button');

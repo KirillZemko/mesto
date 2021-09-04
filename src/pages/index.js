@@ -8,7 +8,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import { Card } from '../components/Card.js'
 import { FormValidator } from '../components/FormValidator.js';
-// import { initialCards } from '../utils/constants.js';
+import PopupDelete from '../components/PopupDelete.js';
 import {
   mainConfigValidation,
   editBtn,
@@ -22,6 +22,7 @@ import {
   profileData,
   popupEditAvavat,
   buttonEditAvatar,
+  popupConfirm
 } from '../utils/constants.js';
 
 const api = new Api({
@@ -33,6 +34,23 @@ const api = new Api({
 });
 
 const userInfo = new UserInfo(profileData);
+const popupDelete = new PopupDelete('.popup_conformation', (evt, card) => {
+  deleteConfirm(evt, card);
+});
+
+function deleteConfirm(evt, newCard) {
+  console.log(newCard.getItemId());
+  console.log(evt);
+
+  api.removeCard(newCard.getItemId())
+    .then(() => {
+      // newCard.removeCard();
+      popupDelete.close();
+    })
+    .catch((err) => {
+      console.log(err);
+  });
+}
 
 Promise.all([api.getOriginsCards(), api.getUserInfo()])
   .then(([data, item]) => {
@@ -41,8 +59,6 @@ Promise.all([api.getOriginsCards(), api.getUserInfo()])
 
     userInfo.setUserInfo(item);
     userId = item._id;
-
-    console.log(userId);
 
     cardList.renderItems(data);
   })
@@ -94,11 +110,9 @@ function createCard(item, template) {
     },
     likeCard: () => {
       const likedCard = card.likedCard();
-
       console.log(likedCard);
 
       const result = likedCard ? api.dislikeCard(card.getItemId()) : api.likeCard(card.getItemId());
-
       result
        .then(data => {
         card.setLikes(data.likes);
@@ -186,3 +200,4 @@ newCard.setEventListeners();
 popupWithImg.setEventListeners();
 popupProfile.setEventListeners();
 newAvatar.setEventListeners();
+popupDelete.setEventListeners();

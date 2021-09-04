@@ -37,20 +37,14 @@ export class Card {
       this._likeCard();
     });
 
-    // this.placesLikeButton.addEventListener('click', () => {
-    //   // const evtTarget = evt.target
-    //   // evtTarget.classList.toggle('places__like-button_active')
-    //   this._likeCard();
-    // })
+    this._element.querySelector('.place__trash-btn').addEventListener('click', () => {
+      this._deleteCard();
+    });
 
-    // this.placesDeleteButton.addEventListener('click', () => {
-    //   this._deleteCard();
+    // this._element.querySelector('.place__trash-btn').addEventListener('click', () => {
+    //   this._handelDel();
     // });
 
-
-    this._element.querySelector('.place__trash-btn').addEventListener('click', () => {
-      this._handelDel();
-    });
     this._element.querySelector('.place__image').addEventListener('click', (evt) => {
       evt.preventDefault();
 
@@ -67,6 +61,11 @@ export class Card {
     this._element.querySelector('.place__title').textContent = this._name;
     this.placesLikeButton = this._element.querySelector('.place__like');
     this._likes = this._element.querySelector('.place__like-counter');
+    this.placesDeleteButton = this._element.querySelector('.place__trash-btn');
+
+    // if (this._ownerId !== this._userId){
+    //   this.placesDeleteButton.style.display = 'none';
+    // }
 
     this._setEventListener();
     this.renderLikes();
