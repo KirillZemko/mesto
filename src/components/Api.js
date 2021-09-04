@@ -49,7 +49,7 @@ export default class Api {
      .then(this._checkResponse)
   }
 
-  addNewCard({ name, link }){
+  addNewCard({ name, link }) {
     return fetch(`${this._address}/cards`, {
       method: 'POST',
       headers: this._headers,
@@ -61,10 +61,10 @@ export default class Api {
      .then(this._checkResponse);
   }
 
-  dislikeCard(id){
+  dislikeCard(id) {
     return fetch(`${this._address}/cards/likes/${id}`, {
       method: 'DELETE',
-      headers: this._headers
+      headers: this._headers,
     })
      .then(this._checkResponse);
   }

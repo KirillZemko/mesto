@@ -62,24 +62,23 @@ export class Card {
   generatePlaceCard() {
     // записываем разметку в приватное поле _element. Так у других элементов появится доступ к ней.
     this._element = this._getPlaceTemplate();
-    this._setEventListener();
-
     this._element.querySelector('.place__image').src = this._link;
     this._element.querySelector('.place__image').alt = this._name;
     this._element.querySelector('.place__title').textContent = this._name;
     this.placesLikeButton = this._element.querySelector('.place__like');
     this._likes = this._element.querySelector('.place__like-counter');
 
+    this._setEventListener();
     this.renderLikes();
 
     return this._element;
   }
 
-  getItemId(){
+  getItemId() {
     return this._cardId;
   }
 
-  renderLikes(){
+  renderLikes() {
     this._likes.textContent = this._counterLikes.length;
     this.showLikes(this._ownerId);
   }
@@ -87,14 +86,14 @@ export class Card {
   likedCard() {
     return this._counterLikes.some(like => {
       return like._id === this._userId;
-    })
+    });
   }
 
   showLikes() {
     if (this.likedCard(this._userId)) {
-      this.placesLikeButton.classList.add('place__like-type_active');
+      this.placesLikeButton.classList.add('place__like_type_active');
     } else {
-      this.placesLikeButton.classList.remove('place__like-type_active');
+      this.placesLikeButton.classList.remove('place__like_type_active');
     }
   }
 

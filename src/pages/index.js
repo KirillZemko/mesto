@@ -36,13 +36,13 @@ const userInfo = new UserInfo(profileData);
 
 Promise.all([api.getOriginsCards(), api.getUserInfo()])
   .then(([data, item]) => {
-    // console.log(item);
-    // console.log(data);
+    console.log(item);
+    console.log(data);
 
     userInfo.setUserInfo(item);
     userId = item._id;
 
-    console.log(item);
+    console.log(userId);
 
     cardList.renderItems(data);
   })
@@ -94,19 +94,22 @@ function createCard(item, template) {
     },
     likeCard: () => {
       const likedCard = card.likedCard();
+
+      console.log(likedCard);
+
       const result = likedCard ? api.dislikeCard(card.getItemId()) : api.likeCard(card.getItemId());
 
       result
        .then(data => {
         card.setLikes(data.likes);
-        card.renderLikes()
+        card.renderLikes();
 
       })
        .catch((err) => {
         console.log(err);
       })
     }
-  }, template, userId, item._id);
+  }, userId, item._id);
 
   return card;
 }
