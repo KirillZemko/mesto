@@ -1,5 +1,3 @@
-let userId;
-
 import '../pages/index.css';
 import Api from '../components/Api.js';
 import UserInfo from '../components/UserInfo.js';
@@ -24,6 +22,8 @@ import {
   buttonEditAvatar,
 } from '../utils/constants.js';
 
+let userId;
+
 const api = new Api({
   address: 'https://mesto.nomoreparties.co/v1/cohort-27',
   headers: {
@@ -37,12 +37,13 @@ const popupDelete = new PopupDelete('.popup_conformation', (evt, card) => {
   deleteConfirm(evt, card);
 });
 
-function deleteConfirm(evt, newCard) {
-  console.log(newCard.getItemId());
+function deleteConfirm(evt, popupAddCard) {
+  console.log(popupAddCard.getItemId());
   console.log(evt);
 
-  api.removeCard(newCard.getItemId())
+  api.removeCard(popupAddCard.getItemId())
     .then(() => {
+      popupAddCard.removeCard();
       popupDelete.close();
     })
     .catch((err) => {
@@ -92,13 +93,13 @@ const cardList = new Section({
   renderer: (item) => {
     const card = createCard(item, '.place-template');
     const cardElement = card.generatePlaceCard();
-    cardList.addItem(cardElement);
+    cardList.setItems(cardElement);
     }
   },
   '.places'
 );
 
-function createCard(item, template) {
+function createCard(item) {
   const card = new Card(item, '.place-template', {
     handelCardClick: (name, link) => {
       popupWithImg.open(name, link);
@@ -126,11 +127,11 @@ function createCard(item, template) {
   return card;
 }
 
-const newCard = new PopupWithForm(
+const popupAddCard = new PopupWithForm(
   '.popup_add-card',
   (item) => {
     console.log(item);
-    newCard.renderLoading(true);
+    popupAddCard.renderLoading(true);
     api.addNewCard(item)
      .then(item => {
        console.log(item);
@@ -139,7 +140,7 @@ const newCard = new PopupWithForm(
        cardList.addItem(newAddedCard);
      })
       .finally(() => {
-        newCard.renderLoading(false);
+        popupAddCard.renderLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -181,7 +182,7 @@ editBtn.addEventListener('click', () => {
 
 newItemBtn.addEventListener('click', () => {
   formPopupAddCardValidator.resetValidation();
-  newCard.open();
+  popupAddCard.open();
 });
 
 // создаем переменные popup-ов при помощи класса FormValidator
@@ -194,7 +195,7 @@ formPopupEditValidator.enableValidation();
 formPopupAddCardValidator.enableValidation();
 formPopupEditAvatarValidator.enableValidation();
 
-newCard.setEventListeners();
+popupAddCard.setEventListeners();
 popupWithImg.setEventListeners();
 popupProfile.setEventListeners();
 newAvatar.setEventListeners();

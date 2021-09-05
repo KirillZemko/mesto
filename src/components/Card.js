@@ -100,4 +100,8 @@ export class Card {
   setLikes(list) {
     this._counterLikes = list;
   }
+
+  removeCard(){
+    this._element.remove();
+  }
 }

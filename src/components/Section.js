@@ -10,8 +10,12 @@ export default class Section {
     items.forEach(item => this._renderer(item));
   }
 
+  setItems(element) {
+    this._container.append(element);
+  }
+
   // метод добавление элемента в DOM (принимает DOM элемент и вставляем этот элемент в containerSelector)
   addItem(element) {
-    this._container.append(element);
+    this._container.prepend(element);
   }
 }
