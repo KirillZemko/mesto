@@ -46,4 +46,5 @@
 .popup__input-error_active{opacity:1}
 .popup__button_inactive,.popup__button_inactive:hover{background:none;border:1px solid #000;color:#000;opacity:.3}
 .popup__input-section{position:relative}
+.up-button{background-color:#fff;border-radius:5px;bottom:20px;color:#000;font-family:Inter;font-size:13px;font-style:normal;font-weight:400;line-height:16px;margin:0;padding:6px;position:fixed;right:20px;text-decoration:none}
 
