@@ -1,0 +1,16 @@
+.up-button {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  margin: 0;
+  background-color: white;
+  color: black;
+  padding: 6px;
+  text-decoration: none;
+  border-radius: 5px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px
+}
